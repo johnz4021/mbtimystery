@@ -19,6 +19,29 @@ def load_image(image_path):
         print(f'Error loading image: {e}')
         sys.exit(1)
 
+def enter_background(background_num: str):
+    background_dict: dict[str, str] = {"uchi":"UofC-Southwest-Quad.jpg"}
+    background_image_path = background_dict[background_num]
+    background_image = pygame.image.load(background_image_path)
+    screen.blit(background_image, (0, 0))
+
+def enter_avatars(character_list: list[str]):
+    avatar_dict: dict[str, str] = {"bossp":"bossp.PNG",
+                                   "babemax": "babemax.PNG",
+                                   "raven": "raven.PNG"}
+    avatar_url_list = [avatar_dict[x] for x in character_list]
+
+    for counter, avatar_path in enumerate(avatar_url_list):
+        avatar = load_image(avatar_path)
+
+        if counter % 2 == 1:
+            avatar = pygame.transform.flip(avatar, True, False)
+
+        # Adjust these values to change where the image is displayed on the screen
+        image_x = (screen_width - avatar.get_width()) // (len(character_list) + 1) * (counter + 1)  # Horizontal position
+        image_y = screen_height - avatar.get_height()  # Vertical position
+
+        screen.blit(avatar, (image_x, image_y))
 
 def draw_dialogue_box(screen, text):
     """Draws a dialogue box at the bottom of the screen with the given text and a border."""
@@ -62,25 +85,18 @@ if __name__ == "__main__":
     screen = pygame.display.set_mode((screen_width, screen_height))
     pygame.display.set_caption('Mood Mystery')
 
-    background_image_path = "/Users/johnzhang/PycharmProjects/moodmystery/UofC-Southwest-Quad.jpg"
-    background_image = pygame.image.load(background_image_path)
 
-    avatar_path = "/Users/johnzhang/PycharmProjects/moodmystery/IMG_1691.PNG"
-    avatar = load_image(avatar_path)
-
-    # Adjust these values to change where the image is displayed on the screen
-    image_x = (screen_width - avatar.get_width()) // 2  # Horizontal position
-    image_y = screen_height - avatar.get_height()  # Vertical position
+    #SELECTED INTEGER ANSWER
+    answer = 0
 
     # Main game loop
     running = True
     while running:
         # Fill the screen with a color to clear it
         screen.fill((255, 229, 204))  # Change the RGB values if you want a different background color
-        screen.blit(background_image, (0, 0))
-        # Blit the image onto the screen at the specified position
-        screen.blit(avatar, (image_x, image_y))
 
+        enter_background("uchi")
+        enter_avatars(["bossp", "babemax"])
         draw_dialogue_box(screen, "This is a sample dialogue box.")
 
         # Update the display
@@ -93,18 +109,19 @@ if __name__ == "__main__":
             elif event.type == pygame.KEYDOWN:
                 # Check which key was pressed
                 if event.key == pygame.K_1:
+                    answer = 1
                     print("The '1' key was pressed.")
                 elif event.key == pygame.K_2:
+                    answer = 2
                     print("The '2' key was pressed.")
                 elif event.key == pygame.K_3:
+                    answer = 3
                     print("The '3' key was pressed.")
                 elif event.key == pygame.K_4:
+                    answer = 4
                     print("The '4' key was pressed.")
                 elif event.key == pygame.K_RETURN:
                     print("The 'Return' key was pressed.")
 
-
-
-
-    #
+    # Quit Pygame
     pygame.quit()
