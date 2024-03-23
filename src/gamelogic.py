@@ -1,9 +1,10 @@
 from enum import Enum
 
-class Speaker(Enum):
+class Character(Enum):
     MC = 1
     BABEMAX = 2
     BOSSP = 3
+    TUSK = 4
     
     
 class Dialogue:
@@ -13,7 +14,7 @@ class Dialogue:
     
     def __init__(
         self,
-        speaker: Speaker,
+        speaker: Character,
         test: str
     ):
         pass
@@ -25,21 +26,22 @@ class Interactive:
     
     def __init__(
         self,
-        speaker: Speaker,
+        speaker: Character,
         prompt: str,
     ):
         pass
 class Scene:
     """
-    Class to represent dialogue and interactive text
+    Class to represent dialogue and interactive text.
     """
     
     def __init__(
         self,
-        dialogues: list[str],
-        interactive_id,
-        interactive,
-        stat_diff,
+        current_Character: 'Character',
+        dialogues: list['Dialogue'],
+        interactive_id: int,
+        interactive: 'Interactive',
+        stat_diff: list[int],
     ):
         pass
 
