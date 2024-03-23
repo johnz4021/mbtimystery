@@ -1,0 +1,70 @@
+[
+    {
+        "scene_id": 1,
+        "setting": "police_station.png",
+        "dialogues": [
+            {
+                "dialogue_id": 1,
+                "speaker": "MC",
+                "text": "HEHEHEHE"
+            },
+            {
+                "dialogue_id": 2,
+                "speaker": "BOSSP",
+                "text": "NONONONO"
+            }
+        ],
+        "interactive": {
+            "speaker": "MC",
+            "prompt": "Why?",
+            "choices": {
+                "a": {
+                    "response": "Yes",
+                    "sceneReference": 2
+                },
+                "b": {
+                    "response": "No",
+                    "sceneReference": 3
+                },
+                "c": {
+                    "response": "No",
+                    "sceneReference": 3
+                }
+            }
+        }
+    },
+    {
+        "scene_id": 2,
+        "setting": "police_station.png",
+        "dialogues": [
+            {
+                "dialogue_id": 1,
+                "speaker": "MC",
+                "text": "HEHEHEHE"
+            },
+            {
+                "dialogue_id": 2,
+                "speaker": "BOSSP",
+                "text": "NONONONO"
+            }
+        ],
+        "interactive": {
+            "speaker": "MC",
+            "prompt": "Why?",
+            "choices": {
+                "a": {
+                    "response": "Yes",
+                    "sceneReference": 2
+                },
+                "b": {
+                    "response": "No",
+                    "sceneReference": 3
+                },
+                "c": {
+                    "response": "No",
+                    "sceneReference": 3
+                }
+            }
+        }
+    }
+]
