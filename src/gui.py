@@ -20,15 +20,16 @@ def load_image(image_path):
         sys.exit(1)
 
 def enter_background(background_num: str):
-    background_dict: dict[str, str] = {"uchi":"UofC-Southwest-Quad.jpg"}
+    background_dict: dict[str, str] = {"uchi":"resources/images/UofC-Southwest-Quad.jpg"}
     background_image_path = background_dict[background_num]
     background_image = pygame.image.load(background_image_path)
     screen.blit(background_image, (0, 0))
 
 def enter_avatars(character_list: list[str]):
-    avatar_dict: dict[str, str] = {"bossp":"bossp.PNG",
-                                   "babemax": "babemax.PNG",
-                                   "raven": "raven.PNG"}
+    avatar_dict: dict[str, str] = {"bossp":"resources/images/bossp.PNG",
+                                   "babemax": "resources/images/babemax.PNG",
+                                   "raven": "resources/images/raven.PNG",
+                                   "cornelius": "resources/images/cornelius.PNG"}
     avatar_url_list = [avatar_dict[x] for x in character_list]
 
     for counter, avatar_path in enumerate(avatar_url_list):
