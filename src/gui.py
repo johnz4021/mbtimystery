@@ -22,17 +22,23 @@ def load_image(image_path):
         print(f'Error loading image: {e}')
         sys.exit(1)
 
-def enter_background(background_num: str):
-    background_dict: dict[str, str] = {"uchi":"resources/images/UofC-Southwest-Quad.jpg"}
-    background_image_path = background_dict[background_num]
+def enter_background(background_name: str):
+    background_image_path = f"resources/images/{background_name}"
     background_image = pygame.image.load(background_image_path)
     screen.blit(background_image, (0, 0))
 
+def show_title_screen():
+    title_screen = pygame.image.load("resources/images/title_screen.jpeg")
+    image_x = (screen_width - title_screen.get_width()) // 2
+    image_y = (screen_height - title_screen.get_height()) // 2
+    screen.blit(title_screen, (image_x, image_y))
+
 def enter_avatars(character_list: list[str]):
-    avatar_dict: dict[str, str] = {"bossp":"resources/images/bossp.PNG",
-                                   "babemax": "resources/images/babemax.PNG",
-                                   "raven": "resources/images/raven.PNG",
-                                   "cornelius": "resources/images/cornelius.PNG"}
+    avatar_dict: dict[str, str] = {"BOSSP":"resources/images/bossp.PNG",
+                                   "BABEMAX": "resources/images/babemax.PNG",
+                                   "RAVEN": "resources/images/raven.PNG",
+                                   "CORNELIUS": "resources/images/cornelius.PNG"}
+
     avatar_url_list = [avatar_dict[x] for x in character_list]
 
     for counter, avatar_path in enumerate(avatar_url_list):
@@ -112,13 +118,6 @@ def draw_dialogue_box_with_options(screen, prompt, options, selected_option):
         screen.blit(text_surface, (20 + border_thickness, option_y))  # Adjust for border
 
 
-def update_scene():
-    scene = game.get_current_scene()
-    dialogues = curr_scene.dialogues
-    interactive = curr_scene.interactive
-
-    return scene, dialogues, interactive
-
 
 if __name__ == "__main__":
     '''
@@ -129,7 +128,16 @@ if __name__ == "__main__":
     pygame.init()
     screen = pygame.display.set_mode((screen_width, screen_height))
     pygame.display.set_caption('Mood Mystery')
-    game = Game
+    game = Game()
+
+    #title screen check
+    title_screen_check = 0
+
+    def update_scene():
+        scene = game.get_current_scene()
+        dialogues = scene.dialogues
+        interactive = scene.interactive
+        return scene, dialogues, interactive
 
     #Variable scene content
     curr_scene, curr_dialogues, curr_interactive = update_scene()
@@ -145,36 +153,37 @@ if __name__ == "__main__":
         # Fill the screen with a color to clear it
         screen.fill((255, 229, 204))  # Change the RGB values if you want a different background color
 
-        enter_background(curr_scene.setting)
-        enter_avatars(curr_scene.speakers)
-        #if there is still dialogue remaining
-        if dialogue_progress_counter <= len(curr_dialogues) -1:
-            display_text = curr_dialogues[dialogue_progress_counter].speaker + ": " + curr_dialogues[dialogue_progress_counter].text
-            draw_dialogue_box(screen, display_text)
+        if title_screen_check == 0:
+            show_title_screen()
         else:
-            draw_dialogue_box_with_options(screen, curr_interactive.prompt, curr_interactive.choices,selected_answer)
-        # Update the display
-        pygame.display.flip()
+            enter_background(curr_scene.setting)
+            enter_avatars(curr_scene.speakers)
+            #if there is still dialogue remaining
+            if dialogue_progress_counter <= len(curr_dialogues) -1:
+                draw_dialogue_box(screen, curr_dialogues[dialogue_progress_counter].text)
+            else:
+                draw_dialogue_box_with_options(screen, curr_interactive.prompt, curr_interactive.choices,selected_answer)
+            # Update the display
+            pygame.display.flip()
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
             # Check for KEYDOWN event; KEYUP is when the key is released
             elif event.type == pygame.KEYDOWN:
-
                 #change selected number
-                if event.key == pygame.K_1:
+                if event.key == pygame.K_1 and len(curr_interactive.choices) >= 1:
                     selected_answer = 1
-                elif event.key == pygame.K_2:
+                elif event.key == pygame.K_2 and len(curr_interactive.choices) >= 2:
                     selected_answer = 2
-                elif event.key == pygame.K_3:
+                elif event.key == pygame.K_3 and len(curr_interactive.choices) >= 3:
                     selected_answer = 3
-                elif event.key == pygame.K_4:
-                    selected_answer = 4
 
                 # Check which key was pressed
                 if event.key == pygame.K_RETURN:
-                    if dialogue_progress_counter <= len(curr_dialogues) - 1:
+                    if title_screen_check == 0:
+                        title_screen_check += 1
+                    elif dialogue_progress_counter <= len(curr_dialogues) - 1:
                         dialogue_progress_counter += 1
                     elif dialogue_progress_counter > len(curr_dialogues) -1:
                         #return number to the game
