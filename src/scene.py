@@ -18,3 +18,14 @@ class Scene:
         self.setting = setting
         self.dialogues = dialogues
         self.interactive = interactive
+    @property
+    def setting(self) -> str:
+        return self.setting
+    
+    @property
+    def dialogues(self) -> list[Dialogue]:
+        return self.dialogues
+    
+    @property
+    def interactive(self) -> Interactive:
+        return self.interactive

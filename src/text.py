@@ -16,6 +16,7 @@ class Dialogue(Text):
 
     def __init__(self, speaker: Character, text: str):
         super().__init__(speaker, text)
+    
 
 
 class Interactive(Text):
@@ -26,21 +27,27 @@ class Interactive(Text):
     class Choice:
         """
         Class to represent a single choice in an interactive dialogue.
+        
+        Args:
+            response (str): The text response of the choice.
+            effect (list[int]): The effect of choosing this option, represented as a list of integers.
+            sceneReference (int): The reference to the next scene after this choice is made.
         """
         
-        def __init__(self, response: str, sceneReference: int):
+        def __init__(self, response: str, effect: list[int], sceneReference: int):
             self.response = response
+            self.effect = effect
             self.sceneReference = sceneReference
     
-    def __init__(self, speaker: Character, text: str, choices: dict):
+    def __init__(self, speaker: Character, prompt: str, choices: list[Choice]):
         """
-        Initializes the Interactive object with speaker, text (used as the prompt), and choices.
+        Initializes the Interactive object with a speaker, a prompt, and choices.
 
         Args:
             speaker (Character): The character who is speaking.
-            text (str): The prompt presented to the player.
-            choices (dict): A dictionary of choices where each key is a choice label ('a', 'b', 'c', etc.)
-                            and each value is a dictionary with 'response' and 'sceneReference'.
+            prompt (str): The prompt presented to the player.
+            choices (List[Dict]): A list of dictionaries, each representing a choice with 'response', 'effect', and 'sceneReference'.
         """
-        super().__init__(speaker, text)
-        self.choices = {key: self.Choice(**value) for key, value in choices.items()}
+        super().__init__(speaker, prompt)
+        # Here you would transform each dict in the list to a Choice object
+        self.choices = [Interactive.Choice(**choice) for choice in choices]

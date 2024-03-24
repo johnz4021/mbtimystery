@@ -1,7 +1,7 @@
-
 import json
 from abc import ABC
 from scene import Scene
+
 
 class Game:
     """
@@ -23,12 +23,12 @@ class Game:
         Constructor for game logic
 
         Args:
-            mc_name (str): Name of the Main Character (defaults to 'MC')
-            mb_score (list[int]): Myers-Briggs score, a list of integers consisting of ie, sn, tf, and jp scores.
-            ie_score (int): Introverted vs. Extroverted score on a scale of (-10, 10), where -10 is fully introverted and 10 is fully extroverted.
-            sn_score (int): Sensing vs. Intuition score on a scale of (-10, 10), where -10 leans towards Sensing and 10 towards Intuition.
-            tf_score (int): Thinking vs. Feeling score on a scale of (-10, 10), where -10 is more Thinking-oriented and 10 is more Feeling-oriented.
-            jp_score (int): Judging vs. Perceiving score on a scale of (-10, 10), where -10 favors Judging and 10 favors Perceiving.
+            name (str): Name of the Main Character (defaults to 'MC')
+            mb_score (list[int]): Myers-Briggs score, a list of integers consisting of ie, sn, ft, and pj scores.
+            ie_score (int): Introverted vs. Extroverted score on a scale of (-10, 10), where -10 is more introverted and 10 is more extroverted.
+            sn_score (int): Sensing vs. Intuition score on a scale of (-10, 10), where -10 is more Sensing and 10 is more Intuition.
+            ft_score (int): Feeling vs. Thinking score on a scale of (-10, 10), where -10 is more Feeling and 10 is more Thinking.
+            pj_score (int): Perceiving vs. Judging score on a scale of (-10, 10), where -10 is more Perceiving and 10 is more Judging .
             scenes (dict[int, Scene]): Dictionary mapping scene IDs to Scene objects, representing all possible scenes in the game.
             current_scene (int, optional): ID of the current scene. Defaults to 1.
 
@@ -36,12 +36,13 @@ class Game:
         self.name = "MC"
         self.ie_score = 0
         self.sn_score = 0
-        self.tf_score = 0
-        self.jp_score = 0
+        self.ft_score = 0
+        self.pj_score = 0
         self.scenes = self.load_scenes_from_json("resources\scene.json")
         self.current_scene = current_scene
         self.mb_score = [ie_score, sn_score, tf_score, jp_score]
-    
+
+    # TODO: SET NAME AT THE BEGINNING OF THE GAME
     @property
     def name(self) -> str:
         """
@@ -49,7 +50,23 @@ class Game:
         """
         return self.name
 
-    def load_scenes_from_json(self, json_file_path):
+    @property
+    def ie_score(self) -> int:
+        return self.ie_score
+
+    @property
+    def sn_score(self) -> int:
+        return self.sn_score
+
+    @property
+    def ft_score(self) -> int:
+        return self.ft_score
+
+    @property
+    def pj_score(self) -> int:
+        return self.pj_score
+
+    def load_scenes_from_json(self, json_file_path) -> dict[int: Scene]:
         """
         Loads scenes from a JSON file and returns a dictionary mapping scene_id to scene data.
 
