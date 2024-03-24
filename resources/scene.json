@@ -380,6 +380,95 @@
                 {
                     "response": "Let’s gather information from afar through cyber-breaching.",
                     "effect": [-5,3,-3,0],
+                    "sceneReference": 13
+                }
+            ]
+        }
+    },
+    {
+        "scene_id": 13,
+        "speakers": "MC,BABEMAX",
+        "setting": "police_station.png",
+        "dialogues": [
+            {
+                "dialogue_id": 1,
+                "speaker": "BABEMAX",
+                "text": "Hey check this out! I was able to decrypt this guarded file from Company X’s server and it seems to mention Lizzi along with another name… “Birb?” New name to me, wonder who she is."
+            }
+        ],
+        "interactive": {
+            "speaker": "BABEMAX",
+            "prompt": "Who do you want to approach and talk to further?",
+            "choices": [
+                {
+                    "response": "Search the area and find Birb.",
+                    "effect": [0,0,0,-5],
+                    "sceneReference": 14
+                },
+                {
+                    "response": "Investigate Elon Tusk further.",
+                    "effect": [0,0,0,5],
+                    "sceneReference": 15
+                }
+            ]
+        }
+    },
+    {
+        "scene_id": 14,
+        "speakers": "MC,BABEMAX,BIRB",
+        "setting": "police_station.png",
+        "dialogues": [
+            {
+                "dialogue_id": 1,
+                "speaker": "BIRB",
+                "text": "Oh goodness! Don’t sneak up on me like that."
+            }
+        ],
+        "interactive": {
+            "speaker": "BABEMAX",
+            "prompt": "Who are you and what do you want?",
+            "choices": [
+                {
+                    "response": "Sorry, I didn't mean to surprise you.",
+                    "effect": [0,2,0,0],
+                    "sceneReference": 14
+                },
+                {
+                    "response": "… (show detective badge)",
+                    "effect": [0,-2,0,0],
+                    "sceneReference": 14
+                }
+            ]
+        }
+    },
+    {
+        "scene_id": 15,
+        "speakers": "MC,BABEMAX,TUSK",
+        "setting": "police_station.png",
+        "dialogues": [
+            {
+                "dialogue_id": 1,
+                "speaker": "TUSK",
+                "text": "Ah, I see you’ve come back to talk with me."
+            },
+            {
+                "dialogue_id": 2,
+                "speaker": "TUSK",
+                "text": "If it is to help with the murder case, I am more than willing to share."
+            }
+        ],
+        "interactive": {
+            "speaker": "BABEMAX",
+            "prompt": "Who do you want to approach and talk to further?",
+            "choices": [
+                {
+                    "response": "Search the area and find Birb.",
+                    "effect": [0,2,0,0],
+                    "sceneReference": 14
+                },
+                {
+                    "response": "Investigate Elon Tusk further.",
+                    "effect": [0,-2,0,0],
                     "sceneReference": 14
                 }
             ]
