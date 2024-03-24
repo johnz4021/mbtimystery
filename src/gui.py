@@ -99,41 +99,59 @@ def draw_dialogue_box(screen, text):
     # Render and blit the wrapped text onto the screen
     draw_text_wrapped(screen, text, (text_x, text_y), font, 60, BLACK)  # 60 characters, adjust as needed
 
+
+def draw_text_wrapped_2(surface, text, pos, font, max_width, color, bg_color=None):
+    """Draws text on a surface, wrapping words to stay within a specified width, and returns the height of the drawn text."""
+    words = text.split(' ')  # Split the text by spaces to find words
+    space_width, line_height = font.size(' ')  # Width of a space and the height of a line of text.
+    x, initial_y = pos
+    y = initial_y
+    for word in words:
+        word_surface = font.render(word, True, color, bg_color)
+        word_width, word_height = word_surface.get_size()
+        if x + word_width > max_width:
+            x = pos[0]  # Reset x to start of line.
+            y += line_height  # Start on new line.
+        surface.blit(word_surface, (x, y))
+        x += word_width + space_width  # Move x to start of next word.
+
+    # Return the total height of the rendered text
+    return y + line_height - initial_y
+
+
 def draw_dialogue_box_with_options(screen, prompt, options, selected_option):
     """Draws a dialogue box with a prompt, multiple choice options, and a border."""
     font = pygame.font.Font(None, 25)
+    # Define colors
+    BLACK = (0, 0, 0)
+    PURPLE = (128, 0, 128)
+    LIGHT_PINK = (255, 182, 193)
+    LIGHT_BLUE = (173, 216, 230)  # Highlight color
+
     box_height = 150  # Height to accommodate prompt and options
     box_y = screen_height - box_height
     border_thickness = 5  # Thickness of the border
-    border_color = PURPLE  # Color of the border
+    max_text_width = screen_width - (2 * border_thickness) - 40  # Adjust padding as needed
 
     # Draw the border around the dialogue box
-    pygame.draw.rect(screen, border_color,
-                     [0, box_y - border_thickness, screen_width, box_height + (2 * border_thickness)])
+    pygame.draw.rect(screen, PURPLE, [0, box_y - border_thickness, screen_width, box_height + (2 * border_thickness)])
 
     # Draw the dialogue box inside the border
     pygame.draw.rect(screen, LIGHT_PINK, [border_thickness, box_y, screen_width - (2 * border_thickness), box_height])
 
-    # Draw the prompt
-    prompt_surface = font.render(prompt, True, BLACK)
-    screen.blit(prompt_surface, (20 + border_thickness, box_y + 10))  # Adjust for border
+    # Draw the prompt with text wrapping and calculate its height
+    prompt_height = draw_text_wrapped_2(screen, prompt, (20 + border_thickness, box_y + 10), font, screen_width - 40,
+                                      BLACK) + 20  # Extra spacing after the prompt
 
-    # Option positioning
-    option_start_y = box_y + prompt_surface.get_height() + 20  # Start below the prompt
-    option_padding = 5  # Padding between options
-    for fuck, option in enumerate(options):
-        index = fuck + 1
-        if index == selected_option:
-            text_surface = font.render(option, True, BLACK, LIGHT_BLUE)
-        else:
-            print(option)
-            text_surface = font.render(option, True, BLACK)
+    # Option positioning starts below the prompt
+    option_start_y = box_y + 10 + prompt_height  # Adjusted for prompt height
 
-        # Calculate y position of the option
-        option_y = option_start_y + index * (text_surface.get_height() + option_padding)
-        screen.blit(text_surface, (20 + border_thickness, option_y))  # Adjust for border
-
-
+    option_padding = 20  # Increased padding between options for clarity
+    for index, option in enumerate(options):
+        option_bg_color = LIGHT_BLUE if index + 1 == selected_option else None
+        option_height = draw_text_wrapped_2(screen, option, (20 + border_thickness, option_start_y), font,
+                                          screen_width - 40, BLACK, option_bg_color)
+        option_start_y += option_height + option_padding
 
 if __name__ == "__main__":
     '''
