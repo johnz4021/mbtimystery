@@ -165,7 +165,7 @@
                     "sceneReference": 6
                 },
                 {
-                    "response": "Let’s go talk to them directly. See what they have to say.",
+                    "response": "[in progress] Let’s go talk to them directly. See what they have to say.",
                     "effect": [4,0,-3,0],
                     "sceneReference": 9
                 }
@@ -228,12 +228,12 @@
                 {
                     "response": "Elon Tusk? Why was he calling her? Babemax, show me that.",
                     "effect": [1,0,0,2],
-                    "sceneReference": 9
+                    "sceneReference": 8
                 },
                 {
                     "response": "Hmm... Interesting... Can you show me that?",
                     "effect": [-1,0,0,-2],
-                    "sceneReference": 9
+                    "sceneReference": 8
                 }
             ]
         }
