@@ -1,6 +1,6 @@
 import pygame
 import sys
-from game import Game, Scene
+from gamelogic import Game, Scene
 from text import Dialogue, Interactive
 
 screen_width = 800
@@ -147,9 +147,12 @@ if __name__ == "__main__":
 
         enter_background("uchi")
         enter_avatars(["bossp", "babemax"])
+        enter_background(curr_scene.setting)
+        enter_avatars(curr_scene.speakers)
         #if there is still dialogue remaining
         if dialogue_progress_counter <= len(curr_dialogues) -1:
-            draw_dialogue_box(screen, curr_dialogues[dialogue_progress_counter].text)
+            display_text = curr_dialogues[dialogue_progress_counter].speaker + ": " + curr_dialogues[dialogue_progress_counter].text
+            draw_dialogue_box(screen, display_text)
         else:
             draw_dialogue_box_with_options(screen, curr_interactive.prompt, curr_interactive.choices,selected_answer)
         # Update the display
