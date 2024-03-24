@@ -155,6 +155,7 @@ if __name__ == "__main__":
 
         if title_screen_check == 0:
             show_title_screen()
+            pygame.display.flip()
         else:
             enter_background(curr_scene.setting)
             enter_avatars(curr_scene.speakers)
