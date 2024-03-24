@@ -2,11 +2,12 @@
     {
         "scene_id": 1,
         "setting": "police_station.png",
+        "speakers": "MC, BOSSP",
         "dialogues": [
             {
                 "dialogue_id": 1,
                 "speaker": "MC",
-                "text": "HEHEHEHE"
+                "text": "Agent {MC}, You need to party!"
             },
             {
                 "dialogue_id": 2,
@@ -35,6 +36,7 @@
     },
     {
         "scene_id": 2,
+        "speakers": "MC, BOSSP",
         "setting": "police_station.png",
         "dialogues": [
             {
