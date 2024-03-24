@@ -148,22 +148,38 @@ class Game:
         """
         # This is a list of integers of effects
         effects = player_choice.effect  # ie. "[#,#,#,#]""
+
+        # Update ie_score
         if effects[0] > 0 and (effects[0] + self.ie_score > 10):
             self.ie_score = 10
-        if effects[0] < 0 and (effects[0] + self.ie_score < -10):
+        elif effects[0] < 0 and (effects[0] + self.ie_score < -10):
             self.ie_score = -10
+        else:
+            self.ie_score += effects[0]
+
+        # Update sn_score
         if effects[1] > 0 and (effects[1] + self.sn_score > 10):
             self.sn_score = 10
-        if effects[1] < 0 and (effects[1] + self.sn_score < -10):
+        elif effects[1] < 0 and (effects[1] + self.sn_score < -10):
             self.sn_score = -10
+        else:
+            self.sn_score += effects[1]
+
+        # Update ft_score
         if effects[2] > 0 and (effects[2] + self.ft_score > 10):
             self.ft_score = 10
-        if effects[2] < 0 and (effects[2] + self.ft_score < -10):
-            self.ie_score = -10
+        elif effects[2] < 0 and (effects[2] + self.ft_score < -10):
+            self.ft_score = -10
+        else:
+            self.ft_score += effects[2]
+
+        # Update pj_score
         if effects[3] > 0 and (effects[3] + self.pj_score > 10):
             self.pj_score = 10
-        if effects[3] < 0 and (effects[3] + self.pj_score < -10):
+        elif effects[3] < 0 and (effects[3] + self.pj_score < -10):
             self.pj_score = -10
+        else:
+            self.pj_score += effects[3]
 
     # NOTE: This method may be the culprit of issues
     def process_scene(self, player_decision: int) -> None:
@@ -171,7 +187,7 @@ class Game:
         Updates the current scene in the game based on the player decision (usually 1-4). Updates the player scores with the effect of the choice and then changes the scene to the new scene of the choice reference.
 
         Args:
-            player_decision (int): The number the player chooses from the list of choices from the current scene's interactive. This determines the effeect and reference scene id (ie. the new scene).
+            player_decision (int): The number the player chooses from the list of choices from the current scene's interactive. This determines the effect and reference scene id (ie. the new scene).
         """
         # the choice the player chooses in the current scene (Choice object)
         player_choice = self.current_scene.interactive.choices[player_decision - 1]
