@@ -1,7 +1,7 @@
 [
     {
         "scene_id": 1,
-        "speakers": "BOSSP,BABEMAX",
+        "speakers": "BOSSP",
         "setting": "downtown_chicago.jpg",
         "dialogues": [
             {
@@ -39,7 +39,7 @@
     },
     {
         "scene_id": 2,
-        "speakers": "BOSSP,BABEMAX",
+        "speakers": "BOSSP",
         "setting": "downtown_chicago.jpg",
         "dialogues": [
             {
@@ -63,7 +63,7 @@
     {
         "scene_id": 30,
         "speakers": "BABEMAX",
-        "setting": "downtown_chicago.jpg",
+        "setting": "cafe.jpg",
         "dialogues": [
             {
                 "dialogue_id": 1,
