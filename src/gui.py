@@ -35,7 +35,7 @@ def show_title_screen():
     screen.blit(title_screen, (image_x, image_y))
 
 def enter_avatars(character_list: list[str]):
-    avatar_dict: dict[str, str] = {"BOSSP":"resources/images/bossp.PNG",
+    avatar_dict: dict[str, str] = {"BOSSP": "resources/images/bossp.PNG",
                                    "BABEMAX": "resources/images/babemax.PNG",
                                    "BIRB": "resources/images/birb.PNG",
                                    "CORNELIUS": "resources/images/cornelius.PNG",
@@ -44,17 +44,29 @@ def enter_avatars(character_list: list[str]):
 
     avatar_url_list = [avatar_dict[x] for x in character_list]
 
+    # Define padding between avatars
+    padding = 20  # This value can be adjusted as needed
+
+    # Calculate the total width all avatars will occupy including padding
+    total_avatar_width = sum(load_image(avatar_dict[x]).get_width() for x in character_list) + padding * (len(character_list) - 1)
+
+    # Calculate starting x position
+    starting_x = (screen_width - total_avatar_width) // 2
+
+    current_x = starting_x  # Initialize current_x to starting_x
     for counter, avatar_path in enumerate(avatar_url_list):
         avatar = load_image(avatar_path)
-
         if counter % 2 == 1:
             avatar = pygame.transform.flip(avatar, True, False)
 
-        # Adjust these values to change where the image is displayed on the screen
-        image_x = (screen_width - avatar.get_width()) // (len(character_list) + 1) * (counter + 1)  # Horizontal position
+        # Image_y remains the same because we are only adjusting horizontal spacing
         image_y = screen_height - avatar.get_height()  # Vertical position
 
-        screen.blit(avatar, (image_x, image_y))
+        screen.blit(avatar, (current_x, image_y))
+
+        # Update current_x for the next avatar, including padding
+        current_x += avatar.get_width() + padding
+
 
 def draw_text_wrapped(surface, text, pos, font, max_width, color):
     """Draws text on a surface, wrapping words to stay within a specified width."""
