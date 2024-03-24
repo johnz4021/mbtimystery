@@ -1,7 +1,7 @@
 import json
 from abc import ABC
 from scene import Scene
-from src.Text import Dialogue, Interactive
+from text import Dialogue, Interactive
 
 
 class Game:
@@ -11,36 +11,33 @@ class Game:
 
     def __init__(
         self,
-        name: str,
-        mb_score: list[int],
-        ie_score: int,
-        sn_score: int,
-        tf_score: int,
-        jp_score: int,
-        scenes: dict[int:Scene],
+        ie_score: int = 0,
+        sn_score: int = 0,
+        tf_score: int = 0,
+        jp_score: int = 0,
         current_scene: int = 1,
+        name: str = "MC",
     ):
         """
         Constructor for game logic
 
         Args:
-            name (str): Name of the Main Character (defaults to 'MC')
-            mb_score (list[int]): Myers-Briggs score, a list of integers consisting of ie, sn, ft, and pj scores.
             ie_score (int): Introverted vs. Extroverted score on a scale of (-10, 10), where -10 is more introverted and 10 is more extroverted.
-            sn_score (int): Sensing vs. Intuition score on a scale of (-10, 10), where -10 is more Sensing and 10 is more Intuition.
-            ft_score (int): Feeling vs. Thinking score on a scale of (-10, 10), where -10 is more Feeling and 10 is more Thinking.
-            pj_score (int): Perceiving vs. Judging score on a scale of (-10, 10), where -10 is more Perceiving and 10 is more Judging .
-            scenes (dict[int, Scene]): Dictionary mapping scene IDs to Scene objects, representing all possible scenes in the game.
+            sn_score (int, optional): Sensing vs. Intuition score on a scale of (-10, 10), where -10 is more Sensing and 10 is more Intuition.
+            ft_score (int, optional): Feeling vs. Thinking score on a scale of (-10, 10), where -10 is more Feeling and 10 is more Thinking.
+            pj_score (int, optional): Perceiving vs. Judging score on a scale of (-10, 10), where -10 is more Perceiving and 10 is more Judging .
+            
             current_scene (int, optional): ID of the current scene. Defaults to 1.
+            name (str, optional): Name of the Main Character (defaults to 'MC')
 
         """
         self.name = "MC"
-        self.ie_score = 0
-        self.sn_score = 0
-        self.ft_score = 0
-        self.pj_score = 0
+        
+        # scenes (dict[int, Scene]): Dictionary mapping scene IDs to Scene objects, representing all possible scenes in the game.
         self.scenes = self.load_scenes_from_json("resources\scene.json")
         self.current_scene = current_scene
+        
+        # mb_score (list[int]): Myers-Briggs score, a list of integers consisting of ie, sn, ft, and pj scores.
         self.mb_score = [ie_score, sn_score, tf_score, jp_score]
 
     # TODO: SET NAME AT THE BEGINNING OF THE GAME
