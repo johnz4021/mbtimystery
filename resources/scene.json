@@ -198,7 +198,7 @@
     {
         "scene_id": 7,
         "speakers": "LIZZI,CORNELIUS",
-        "setting": "police_station.png",
+        "setting": "manor.jpg",
         "dialogues": [
             {
                 "dialogue_id": 1,
@@ -241,7 +241,7 @@
     {
         "scene_id": 8,
         "speakers": "LIZZI,TUSK",
-        "setting": "police_station.png",
+        "setting": "manor.jpg",
         "dialogues": [
             {
                 "dialogue_id": 1,
@@ -284,7 +284,7 @@
     {
         "scene_id": 9,
         "speakers": "BABEMAX",
-        "setting": "police_station.png",
+        "setting": "manor.jpg",
         "dialogues": [
             {
                 "dialogue_id": 1,
@@ -312,7 +312,7 @@
     {
         "scene_id": 10,
         "speakers": "BABEMAX,CORNELIUS",
-        "setting": "police_station.png",
+        "setting": "manor.jpg",
         "dialogues": [
             {
                 "dialogue_id": 1,
@@ -350,7 +350,7 @@
     {
         "scene_id": 11,
         "speakers": "BABEMAX,TUSK",
-        "setting": "police_station.png",
+        "setting": "manor.jpg",
         "dialogues": [
             {
                 "dialogue_id": 1,
@@ -393,7 +393,7 @@
             {
                 "dialogue_id": 1,
                 "speaker": "BOSS P",
-                "text": "BOSSP: Agent Incognito and Agent Babemax, I have some new information to relay to you."
+                "text": "BOSS P: Agent Incognito and Agent Babemax, I have some new information to relay to you."
             },
             {
                 "dialogue_id": 2,
@@ -431,7 +431,7 @@
     {
         "scene_id": 13,
         "speakers": "BABEMAX",
-        "setting": "police_station.png",
+        "setting": "cafe.jpg",
         "dialogues": [
             {
                 "dialogue_id": 1,
@@ -459,7 +459,7 @@
     {
         "scene_id": 14,
         "speakers": "BABEMAX,BIRB",
-        "setting": "police_station.png",
+        "setting": "manor.jpg",
         "dialogues": [
             {
                 "dialogue_id": 1,
@@ -487,7 +487,7 @@
     {
         "scene_id": 15,
         "speakers": "BABEMAX,BIRB",
-        "setting": "police_station.png",
+        "setting": "manor.jpg",
         "dialogues": [
             {
                 "dialogue_id": 1,
@@ -530,7 +530,7 @@
     {
         "scene_id": 16,
         "speakers": "BABEMAX,TUSK",
-        "setting": "police_station.png",
+        "setting": "manor.jpg",
         "dialogues": [
             {
                 "dialogue_id": 1,
@@ -639,7 +639,7 @@
     {
         "scene_id": 19,
         "speakers": "BABEMAX,BIRB",
-        "setting": "police_station.png",
+        "setting": "jail.png",
         "dialogues": [
             {
                 "dialogue_id": 1,
