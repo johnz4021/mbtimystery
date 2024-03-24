@@ -6,7 +6,7 @@ class Scene:
     Class to represent a scene, including both dialogues and an interactive section.
     """
 
-    def __init__(self, setting: str, dialogues: list[Dialogue], interactive: Interactive):
+    def __init__(self, speakers:list[str], setting: str, dialogues: list[Dialogue], interactive: Interactive):
         """
         Initializes the Scene object with an ID, setting, dialogues, and an interactive section.
 
@@ -15,9 +15,13 @@ class Scene:
             dialogues (List[Dialogue]): A list of Dialogue objects representing the scene's dialogues.
             interactive (Interactive): An Interactive object representing the scene's choice-based interactive segment.
         """
+        self.speakers = speakers
         self.setting = setting
         self.dialogues = dialogues
         self.interactive = interactive
+    @property
+    def speakers(self) -> list[str]:
+        return self.speakers
     @property
     def setting(self) -> str:
         return self.setting

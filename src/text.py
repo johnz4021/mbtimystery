@@ -40,6 +40,18 @@ class Interactive(Text):
             self.response = response
             self.effect = effect
             self.sceneReference = scene_reference
+                
+        @property
+        def response(self) -> str:
+            return self.response
+        
+        @property
+        def scene_reference(self) -> int:
+            return self.scene_reference
+        
+        @property
+        def effect(self) -> list[int]:
+            return self.effect
 
     def __init__(self, speaker: Character, prompt: str, choices: list[dict]):
         """

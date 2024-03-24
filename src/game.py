@@ -1,7 +1,7 @@
 import json
 from abc import ABC
 from scene import Scene
-from src.Text import Dialogue
+from src.Text import Dialogue, Interactive
 
 
 class Game:
@@ -79,13 +79,13 @@ class Game:
         """
         with open(json_file_path, "r") as file:
             scenes = json.load(file)
-            
+
         scenes_dict = {}
         # Iterate over each scene in the loaded list of scenes
         for scene in scenes:
             # Use the scene_id as the key and the entire scene as the value
             scenes_dict[scene["scene_id"]] = scene
-        
+
         return scenes_dict
 
     def get_current_scene_id(self) -> int:
@@ -114,12 +114,40 @@ class Game:
             # Handle the case where the scene ID is not found
             print(f"Scene with ID {self.current_scene} not found.")
             return None
-    
-    def change_current_scene(self, player_decision: int) -> None:
+
+    def update_scores(self, player_choice: Interactive.Choice) -> None:
         """
-        Updates the current scene in the game based on the player decision (usually 1-4).
+        Updates the player's Myers-Briggs scores and its subscores with the effects of the player choice.
+        """
+        # This is a list of integers of effects
+        effects = player_choice.effect  # ie. "[#,#,#,#]""
+        if effects[0] > 0 and (effects[0] + self.ie_score > 10):
+            self.ie_score = 10
+        if effects[0] < 0 and (effects[0] + self.ie_score < -10):
+            self.ie_score = -10
+        if effects[1] > 0 and (effects[1] + self.sn_score > 10):
+            self.sn_score = 10
+        if effects[1] < 0 and (effects[1] + self.sn_score < -10):
+            self.sn_score = -10
+        if effects[2] > 0 and (effects[2] + self.ft_score > 10):
+            self.ft_score = 10
+        if effects[2] < 0 and (effects[2] + self.ft_score < -10):
+            self.ie_score = -10
+        if effects[3] > 0 and (effects[3] + self.pj_score > 10):
+            self.pj_score = 10
+        if effects[3] < 0 and (effects[3] + self.pj_score < -10):
+            self.pj_score = -10
+
+    # NOTE: This method may be the culprit of issues
+    def process_scene(self, player_decision: int) -> None:
+        """
+        Updates the current scene in the game based on the player decision (usually 1-4). Updates the player scores with the effect of the choice and then changes the scene to the new scene of the choice reference.
 
         Args:
-            choice_id (_type_): The number the player chooses from the list of choices from the current scene's interactive. This determines the reference scene id (ie. the new scene).
+            player_decision (int): The number the player chooses from the list of choices from the current scene's interactive. This determines the effeect and reference scene id (ie. the new scene).
         """
-        pass
+        # the choice the player chooses in the current scene (Choice object)
+        player_choice = self.current_scene.interactive.choices[player_decision - 1]
+        self.update_scores(player_choice)
+        # change the current scene to the new scene
+        self.current_scene = self.scenes.get(player_choice.scene_reference)
