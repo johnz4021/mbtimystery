@@ -39,6 +39,7 @@
     },
     {
         "scene_id": 2,
+        "speakers": "MC,BOSSP,BABEMAX",
         "setting": "police_station.png",
         "dialogues": [
             {
@@ -66,6 +67,7 @@
     },
     {
         "scene_id": 3,
+        "speakers": "MC,BABEMAX",
         "setting": "police_station.png",
         "dialogues": [
             {
@@ -79,14 +81,192 @@
             "prompt": "Anyways, which direction would you like to go with our investigation?",
             "choices": [
                 {
-                    "response": "Why were you sleeping if you’re a robot...?",
-                    "effect": [0,0,3,2],
-                    "sceneReference": 3
+                    "response": "Identify potential culprits based on financial motives",
+                    "effect": [0,0,5,0],
+                    "sceneReference": 4
                 },
                 {
-                    "response": "Cool, a sleeping robot! Nice to meet you Babemax.",
-                    "effect": [0,0,-3,-2],
-                    "sceneReference": 3
+                    "response": "Learn more about Lizzi’s personal relationships",
+                    "effect": [0,0,-5,0],
+                    "sceneReference": 5
+                }
+            ]
+        }
+    },
+    {
+        "scene_id": 4,
+        "speakers": "MC,BABEMAX",
+        "setting": "police_station.png",
+        "dialogues": [
+            {
+                "dialogue_id": 1,
+                "speaker": "BABEMAX",
+                "text": "Don’t worry, we were given permission to enter Lizzi’s house to find evidence."
+            }
+        ],
+        "interactive": {
+            "speaker": "BABEMAX",
+            "prompt": "Choice",
+            "choices": [
+                {
+                    "response": "Option 1",
+                    "effect": [0,0,0,0],
+                    "sceneReference": 5
+                },
+                {
+                    "response": "Option 2",
+                    "effect": [0,0,0,0],
+                    "sceneReference": 5
+                }
+            ]
+        }
+    },
+    {
+        "scene_id": 5,
+        "speakers": "MC,BABEMAX",
+        "setting": "police_station.png",
+        "dialogues": [
+            {
+                "dialogue_id": 1,
+                "speaker": "BABEMAX",
+                "text": "That is Lizzi’s house down the road. We could ask around this neighborhood to find clues."
+            }
+        ],
+        "interactive": {
+            "speaker": "BABEMAX",
+            "prompt": "What do you say?",
+            "choices": [
+                {
+                    "response": "We should look for phone records of her interactions with others.",
+                    "effect": [-4,0,3,0],
+                    "sceneReference": 6
+                },
+                {
+                    "response": "Let’s go chat with her acquaintances around here. See what they think.",
+                    "effect": [4,0,-3,0],
+                    "sceneReference": 7
+                }
+            ]
+        }
+    },
+    {
+        "scene_id": 6,
+        "speakers": "MC,BABEMAX",
+        "setting": "police_station.png",
+        "dialogues": [
+            {
+                "dialogue_id": 1,
+                "speaker": "BABEMAX",
+                "text": "Hey [NAME]! I was able to extract some records from this phone Lizzi left behind."
+            }
+        ],
+        "interactive": {
+            "speaker": "BABEMAX",
+            "prompt": "Take a look at this.",
+            "choices": [
+                {
+                    "response": "Let's see it.",
+                    "effect": [0,0,0,0],
+                    "sceneReference": 8
+                }
+            ]
+        }
+    },
+    {
+        "scene_id": 7,
+        "speakers": "MC,BABEMAX",
+        "setting": "police_station.png",
+        "dialogues": [
+            {
+                "dialogue_id": 1,
+                "speaker": "BABEMAX",
+                "text": "Hey [NAME]! I was able to extract some records from this phone Lizzi left behind."
+            }
+        ],
+        "interactive": {
+            "speaker": "BABEMAX",
+            "prompt": "Take a look at this call with her husband Cornelius.",
+            "choices": [
+                {
+                    "response": "Let's see it.",
+                    "effect": [0,0,0,0],
+                    "sceneReference": 8
+                }
+            ]
+        }
+    },
+    {
+        "scene_id": 8,
+        "speakers": "LIZZI,CORNELIUS",
+        "setting": "police_station.png",
+        "dialogues": [
+            {
+                "dialogue_id": 1,
+                "speaker": "LIZZI",
+                "text": "Cornelius! When are you thinking of coming back? It’s already 1 am."
+            },
+            {
+                "dialogue_id": 2,
+                "speaker": "CORNELIUS",
+                "text": "Sorry honey, didn’t see the time pass. I’ll head back now."
+            },
+            {
+                "dialogue_id": 3,
+                "speaker": "LIZZI",
+                "text": "Good. I don’t know why you’re always out so late at night, but please-zz do let m– zz bzzttt zz-"
+            },
+            {
+                "dialogue_id": 3,
+                "speaker": "CORNELIUS",
+                "text": "Lizzi..? Hello, Lizzi?!"
+            }
+        ],
+        "interactive": {
+            "speaker": "BABEMAX",
+            "prompt": "Oh there's one from her former boss Elon Tusk as well.",
+            "choices": [
+                {
+                    "response": "Elon Tusk?.",
+                    "effect": [0,0,0,0],
+                    "sceneReference": 9
+                }
+            ]
+        }
+    },
+    {
+        "scene_id": 9,
+        "speakers": "LIZZI,TUSK",
+        "setting": "police_station.png",
+        "dialogues": [
+            {
+                "dialogue_id": 1,
+                "speaker": "TUSK",
+                "text": "Lizzi, how long do you plan to let Cornelius leech off of you? "
+            },
+            {
+                "dialogue_id": 2,
+                "speaker": "LIZZI",
+                "text": "Don’t talk like that about my husband! He deserves some rest from work."
+            },
+            {
+                "dialogue_id": 3,
+                "speaker": "TUSK",
+                "text": "Fine. But he’s been doing nothing for years now. Don’t let him drag you down."
+            },
+            {
+                "dialogue_id": 4,
+                "speaker": "LIZZI",
+                "text": "That’s for me to decide. And stop calling me outside work."
+            }
+        ],
+        "interactive": {
+            "speaker": "BABEMAX",
+            "prompt": "",
+            "choices": [
+                {
+                    "response": "Let's see it.",
+                    "effect": [0,0,0,0],
+                    "sceneReference": 8
                 }
             ]
         }
