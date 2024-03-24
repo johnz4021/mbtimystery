@@ -122,4 +122,4 @@ class Game:
         Args:
             choice_id (_type_): The number the player chooses from the list of choices from the current scene's interactive. This determines the reference scene id (ie. the new scene).
         """
-    
+        pass
