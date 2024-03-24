@@ -4,8 +4,8 @@ class Dialogue:
     """
 
     def __init__(self, speaker: str, text: str):
-        self.speaker = speaker
-        self.text = text
+        self._speaker = speaker
+        self._text = text
 
     @property
     def speaker(self) -> str:
@@ -40,9 +40,9 @@ class Interactive:
         """
 
         def __init__(self, response: str, effect: list[int], scene_reference: int):
-            self.response = response
-            self.effect = effect
-            self.sceneReference = scene_reference
+            self._response = response
+            self._effect = effect
+            self._scene_reference = scene_reference
 
         @property
         def response(self) -> str:
@@ -58,7 +58,7 @@ class Interactive:
 
         @scene_reference.setter
         def scene_reference(self, value: int):
-            self._sceneReference = value
+            self._scene_reference = value
 
         @property
         def effect(self) -> list[int]:
@@ -67,6 +67,10 @@ class Interactive:
         @effect.setter
         def effect(self, value: list[int]):
             self._effect = value
+            
+        def __str__(self):
+            effect_str = ", ".join(map(str, self._effect))
+            return f"Response: {self._response}, Effect: [{effect_str}], Scene Reference: {self._scene_reference}"
 
     def __init__(self, speaker: str, prompt: str, choices: list[dict]):
         """
@@ -75,18 +79,18 @@ class Interactive:
         Args:
             speaker (str): The character who is speaking.
             prompt (str): The prompt presented to the player.
-            choices (list[dict]): A list of dictionaries, each representing a choice with 'response', 'effect', and 'sceneReference'.
+            choices (list[dict]): A list of dictionaries, each representing a choice with 'response', 'effect', and 'scene_reference'.
         """
-        self.speaker = speaker
-        self.prompt = prompt
+        self._speaker = speaker
+        self._prompt = prompt
         # Initialize the choices attribute as an empty list
-        self.choices = choices
+        self._choices = choices
         # for choice in choices:
         #     # For each choice in the list, unpack its keys and values as arguments to the Choice class constructor
         #     choice_obj = Interactive.Choice(
         #         response=choice["response"],
         #         effect=choice["effect"],
-        #         scene_reference=choice["sceneReference"],
+        #         scene_reference=choice["scene_reference"],
         #     )
         #     # Append the newly created Choice object to the choices attribute
         #     self.choices.append(choice_obj)

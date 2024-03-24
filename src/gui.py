@@ -66,7 +66,7 @@ def draw_text_wrapped(surface, text, pos, font, max_width, color):
 def draw_dialogue_box(screen, text):
     """Draws a dialogue box at the bottom of the screen with the given text and a border."""
 
-    font = pygame.font.Font(None, 25)
+    font = pygame.font.Font(None, 27)
     # Dialogue box dimensions and position
     box_height = 100
     box_y = screen_height - box_height
@@ -153,6 +153,7 @@ def draw_dialogue_box_with_options(screen, prompt, options, selected_option):
                                           screen_width - 40, BLACK, option_bg_color)
         option_start_y += option_height + option_padding
 
+
 if __name__ == "__main__":
     '''
         This code runs when this specific file is run
@@ -175,6 +176,8 @@ if __name__ == "__main__":
 
     #Variable scene content
     curr_scene, curr_dialogues, curr_interactive = update_scene()
+    print("1")
+    print(curr_scene)
     #Counters
     dialogue_progress_counter = 0
 
@@ -226,7 +229,9 @@ if __name__ == "__main__":
                         #return number to the game
                         game.process_scene(selected_answer)
                         #update scene stuff
-                        update_scene()
+                        curr_scene, curr_dialogues, curr_interactive = update_scene()
+                        print("2")
+                        print(curr_scene)
                         dialogue_progress_counter = 0 
 
     # Quit Pygame
