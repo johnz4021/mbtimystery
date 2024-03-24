@@ -1,6 +1,6 @@
 import pygame
 import sys
-from gamelogic import Game, Scene
+from gamelogic import Game, Scene, Text, Dialogue, Interactive
 
 screen_width = 800
 screen_height = 600
@@ -10,6 +10,7 @@ WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 LIGHT_PINK = (255, 204, 255)
 PURPLE = (178, 102, 255)  # Color for the border
+LIGHT_BLUE = (173, 216, 230)  # Highlight color
 
 def load_image(image_path):
     """Load an image from the specified file path."""
@@ -77,19 +78,65 @@ def draw_dialogue_box(screen, text):
     screen.blit(text_surface, (text_x, text_y))
 
 
+def draw_dialogue_box_with_options(screen, prompt, options, selected_option):
+    """Draws a dialogue box with a prompt, multiple choice options, and a border."""
+    font = pygame.font.Font(None, 36)
+    box_height = 250  # Height to accommodate prompt and options
+    box_y = screen_height - box_height
+    border_thickness = 5  # Thickness of the border
+    border_color = PURPLE  # Color of the border
+
+    # Draw the border around the dialogue box
+    pygame.draw.rect(screen, border_color,
+                     [0, box_y - border_thickness, screen_width, box_height + (2 * border_thickness)])
+
+    # Draw the dialogue box inside the border
+    pygame.draw.rect(screen, LIGHT_PINK, [border_thickness, box_y, screen_width - (2 * border_thickness), box_height])
+
+    # Draw the prompt
+    prompt_surface = font.render(prompt, True, BLACK)
+    screen.blit(prompt_surface, (20 + border_thickness, box_y + 10))  # Adjust for border
+
+    # Option positioning
+    option_start_y = box_y + prompt_surface.get_height() + 20  # Start below the prompt
+    option_padding = 5  # Padding between options
+    for index, option in enumerate(options):
+        if index == selected_option:
+            text_surface = font.render(option, True, BLACK, LIGHT_BLUE)
+        else:
+            text_surface = font.render(option, True, BLACK)
+
+        # Calculate y position of the option
+        option_y = option_start_y + index * (text_surface.get_height() + option_padding)
+        screen.blit(text_surface, (20 + border_thickness, option_y))  # Adjust for border
+
+def update_scene():
+    curr_scene = game.get_current_scene()
+    curr_dialogues = curr_scene.dialogues
+    curr_interactive = curr_scene.interactive
+
+    return curr_scene,curr_dialogues, curr_interactive
+
+
 if __name__ == "__main__":
     '''
         This code runs when this specific file is run
     '''
 
+    #Initialization
     pygame.init()
     screen = pygame.display.set_mode((screen_width, screen_height))
     pygame.display.set_caption('Mood Mystery')
     game = Game
-    curr_scene = game.get_current_scene()
 
-    #SELECTED INTEGER ANSWER
-    answer = 0
+    #Variable scene content
+
+    curr_scene, curr_dialogues, curr_interactive = update_scene()
+    #Counters
+    dialogue_progress_counter = 0
+
+    #Selected integer answer
+    selected_answer = 1
 
     # Main game loop
     running = True
@@ -99,8 +146,11 @@ if __name__ == "__main__":
 
         enter_background("uchi")
         enter_avatars(["bossp", "babemax"])
-        draw_dialogue_box(screen, "This is a sample dialogue box.")
-
+        #if there is still dialogue remaining
+        if dialogue_progress_counter <= len(curr_dialogues) -1:
+            draw_dialogue_box(screen, curr_dialogues[dialogue_progress_counter].text)
+        else:
+            draw_dialogue_box_with_options(screen, curr_interactive.prompt, curr_interactive.choices,selected_answer)
         # Update the display
         pygame.display.flip()
 
@@ -109,21 +159,27 @@ if __name__ == "__main__":
                 running = False
             # Check for KEYDOWN event; KEYUP is when the key is released
             elif event.type == pygame.KEYDOWN:
-                # Check which key was pressed
+
+                #change selected number
                 if event.key == pygame.K_1:
-                    answer = 1
-                    print("The '1' key was pressed.")
+                    selected_answer = 1
                 elif event.key == pygame.K_2:
-                    answer = 2
-                    print("The '2' key was pressed.")
+                    selected_answer = 2
                 elif event.key == pygame.K_3:
-                    answer = 3
-                    print("The '3' key was pressed.")
+                    selected_answer = 3
                 elif event.key == pygame.K_4:
-                    answer = 4
-                    print("The '4' key was pressed.")
-                elif event.key == pygame.K_RETURN:
-                    print("The 'Return' key was pressed.")
+                    selected_answer = 4
+
+                # Check which key was pressed
+                if event.key == pygame.K_RETURN:
+                    if dialogue_progress_counter <= len(curr_dialogues) - 1:
+                        dialogue_progress_counter += 1
+                    elif dialogue_progress_counter > len(curr_dialogues) -1:
+                        #return number to the game
+
+                        #update scene stuff
+                        update_scene()
+                        dialogue_progress_counter = 0 
 
     # Quit Pygame
     pygame.quit()
