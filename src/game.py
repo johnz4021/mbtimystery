@@ -134,7 +134,26 @@ class Game:
             scenes_list.append(scene)
 
         return scenes_list
-
+    
+    def replace_name_in_json(json_data, new_name):
+        """
+        Replaces all instances of [Name] or [NAME] in the JSON data with the specified new_name.
+        
+        Args:
+            json_data (list): The JSON data loaded into Python as a list or dict.
+            new_name (str): The new name to replace [Name] or [NAME] with.
+        """
+        if isinstance(json_data, dict):
+            for key, value in json_data.items():
+                if isinstance(value, str):
+                    json_data[key] = value.replace("[Name]", new_name).replace("[NAME]", new_name)
+                elif isinstance(value, (dict, list)):
+                    replace_name_in_json(value, new_name)
+        elif isinstance(json_data, list):
+            for item in json_data:
+                if isinstance(item, (dict, list)):
+                    replace_name_in_json(item, new_name)
+                    
     def get_current_scene_id(self) -> int:
         """
         Returns the current scene id number.
