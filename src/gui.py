@@ -151,7 +151,7 @@ if __name__ == "__main__":
     running = True
     while running:
         # Fill the screen with a color to clear it
-        screen.fill((255, 229, 204))  # Change the RGB values if you want a different background color
+        screen.fill(WHITE)  # Change the RGB values if you want a different background color
 
         if title_screen_check == 0:
             show_title_screen()
@@ -161,6 +161,7 @@ if __name__ == "__main__":
             enter_avatars(curr_scene.speakers)
             #if there is still dialogue remaining
             if dialogue_progress_counter <= len(curr_dialogues) -1:
+                print(curr_dialogues[0].text)
                 draw_dialogue_box(screen, curr_dialogues[dialogue_progress_counter].text)
             else:
                 draw_dialogue_box_with_options(screen, curr_interactive.prompt, curr_interactive.choices,selected_answer)
