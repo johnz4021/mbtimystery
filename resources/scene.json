@@ -3,7 +3,6 @@
         "scene_id": 1,
         "speakers": "MC,BOSSP,BABEMAX",
         "setting": "police_station.png",
-        "speakers": "MC, BOSSP",
         "dialogues": [
             {
                 "dialogue_id": 1,
@@ -22,43 +21,33 @@
             }
         ],
         "interactive": {
-            "speaker": "MC",
+            "speaker": "BOSSP",
             "prompt": "What do you think?",
             "choices": {
                 "a": {
-                    "response": "Yes",
+                    "response": "Got it, Boss! With Babemax, I’ll look into every detail we come across. We’re on a tight schedule, but I’m ready to make a strategic plan to uncover the truth.",
                     "sceneReference": 2
                 },
                 "b": {
-                    "response": "No",
-                    "sceneReference": 3
-                },
-                "c": {
-                    "response": "No",
-                    "sceneReference": 3
+                    "response": "Understood, Boss. I’ll look beyond the obvious, connecting the dots of what’s unseen. 24 hours is tight, but we’ll do the best we can and pivot as new information comes to light.",
+                    "sceneReference": 2
                 }
             }
         }
     },
     {
         "scene_id": 2,
-        "speakers": "MC, BOSSP",
         "setting": "police_station.png",
         "dialogues": [
             {
                 "dialogue_id": 1,
-                "speaker": "MC",
-                "text": "HEHEHEHE"
-            },
-            {
-                "dialogue_id": 2,
                 "speaker": "BOSSP",
-                "text": "NONONONO"
+                "text": "That’s precisely what I like to hear. Now, get cracking!"
             }
         ],
         "interactive": {
-            "speaker": "MC",
-            "prompt": "Why?",
+            "speaker": "BABEMAX",
+            "prompt": "zzzzz... erm... Oh hello [Name]",
             "choices": {
                 "a": {
                     "response": "Yes",
@@ -69,7 +58,7 @@
                     "sceneReference": 3
                 },
                 "c": {
-                    "response": "No",
+                    "response": "Sure",
                     "sceneReference": 3
                 }
             }
