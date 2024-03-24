@@ -1,22 +1,28 @@
 [
     {
         "scene_id": 1,
+        "speakers": "MC,BOSSP,BABEMAX",
         "setting": "police_station.png",
         "dialogues": [
             {
                 "dialogue_id": 1,
-                "speaker": "MC",
-                "text": "HEHEHEHE"
+                "speaker": "BOSSP",
+                "text": "Agent [Name], the city of Chicago has given us 24 hours to crack this case."
             },
             {
                 "dialogue_id": 2,
                 "speaker": "BOSSP",
-                "text": "NONONONO"
+                "text": "To aid you through this, I have sent Babemax as your personal assistant for this investigation. I’ve texted you his location."
+            },
+            {
+                "dialogue_id": 3,
+                "speaker": "BOSSP",
+                "text": "Work closely and let nothing deter you from unveiling the truth."
             }
         ],
         "interactive": {
             "speaker": "MC",
-            "prompt": "Why?",
+            "prompt": "What do you think?",
             "choices": {
                 "a": {
                     "response": "Yes",
