@@ -1,5 +1,6 @@
 import pygame
 import sys
+from gamelogic import Game, Scene
 
 screen_width = 800
 screen_height = 600
@@ -82,10 +83,10 @@ if __name__ == "__main__":
     '''
 
     pygame.init()
-
     screen = pygame.display.set_mode((screen_width, screen_height))
     pygame.display.set_caption('Mood Mystery')
-
+    game = Game
+    curr_scene = game.get_current_scene()
 
     #SELECTED INTEGER ANSWER
     answer = 0
