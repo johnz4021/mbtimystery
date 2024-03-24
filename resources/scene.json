@@ -23,16 +23,18 @@
         "interactive": {
             "speaker": "BOSSP",
             "prompt": "What do you think?",
-            "choices": {
-                "a": {
+            "choices": [
+                {
                     "response": "Got it, Boss! With Babemax, I’ll look into every detail we come across. We’re on a tight schedule, but I’m ready to make a strategic plan to uncover the truth.",
+                    "effect": [2,-3,0,3],
                     "sceneReference": 2
                 },
-                "b": {
+                {
                     "response": "Understood, Boss. I’ll look beyond the obvious, connecting the dots of what’s unseen. 24 hours is tight, but we’ll do the best we can and pivot as new information comes to light.",
+                    "effect": [-2,3,0,-3],
                     "sceneReference": 2
                 }
-            }
+            ]
         }
     },
     {
@@ -48,20 +50,45 @@
         "interactive": {
             "speaker": "BABEMAX",
             "prompt": "zzzzz... erm... Oh hello [Name]",
-            "choices": {
-                "a": {
-                    "response": "Yes",
-                    "sceneReference": 2
-                },
-                "b": {
-                    "response": "No",
+            "choices": [
+                {
+                    "response": "Why were you sleeping if you’re a robot...?",
+                    "effect": [0,0,3,2],
                     "sceneReference": 3
                 },
-                "c": {
-                    "response": "Sure",
+                {
+                    "response": "Cool, a sleeping robot! Nice to meet you Babemax.",
+                    "effect": [0,0,-3,-2],
                     "sceneReference": 3
                 }
+            ]
+        }
+    },
+    {
+        "scene_id": 3,
+        "setting": "police_station.png",
+        "dialogues": [
+            {
+                "dialogue_id": 1,
+                "speaker": "BABEMAX",
+                "text": "Haha although I’m mostly automated, I feel sensations like hunger and fatigue. Gotta get my beauty sleep, y’know?"
             }
+        ],
+        "interactive": {
+            "speaker": "BABEMAX",
+            "prompt": "Anyways, which direction would you like to go with our investigation?",
+            "choices": [
+                {
+                    "response": "Why were you sleeping if you’re a robot...?",
+                    "effect": [0,0,3,2],
+                    "sceneReference": 3
+                },
+                {
+                    "response": "Cool, a sleeping robot! Nice to meet you Babemax.",
+                    "effect": [0,0,-3,-2],
+                    "sceneReference": 3
+                }
+            ]
         }
     }
 ]
