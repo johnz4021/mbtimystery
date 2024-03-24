@@ -1,23 +1,11 @@
-from abc import ABC
-
-
-class Text(ABC):
-    """
-    Base class to represent all text-based game elements.
-    """
-
-    def __init__(self, speaker: str, text: str):
-        self.speaker = speaker
-        self.text = text
-
-
-class Dialogue(Text):
+class Dialogue():
     """
     Class to represent non-interactive dialogue.
     """
 
     def __init__(self, speaker: str, text: str):
-        super().__init__(speaker, text)
+        self.speaker = speaker
+        self.text = text
     
     @property
     def speaker(self) -> str:
@@ -27,7 +15,7 @@ class Dialogue(Text):
     def text(self) -> str:
         return self.text
 
-class Interactive(Text):
+class Interactive():
     """
     Class to represent interactive, choice-based dialogue.
     """
@@ -68,7 +56,8 @@ class Interactive(Text):
             prompt (str): The prompt presented to the player.
             choices (list[dict]): A list of dictionaries, each representing a choice with 'response', 'effect', and 'sceneReference'.
         """
-        super().__init__(speaker, prompt)
+        self.speaker = speaker
+        self.prompt = prompt
         # Initialize the choices attribute as an empty list
         self.choices = []
         for choice in choices:
