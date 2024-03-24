@@ -2,7 +2,7 @@
     {
         "scene_id": 1,
         "speakers": "MC,BOSSP,BABEMAX",
-        "setting": "police_station.png",
+        "setting": "downtown_chicago.jpg",
         "dialogues": [
             {
                 "dialogue_id": 1,
@@ -40,7 +40,7 @@
     {
         "scene_id": 2,
         "speakers": "MC,BOSSP,BABEMAX",
-        "setting": "police_station.png",
+        "setting": "downtown_chicago.jpg",
         "dialogues": [
             {
                 "dialogue_id": 1,
@@ -68,7 +68,7 @@
     {
         "scene_id": 3,
         "speakers": "MC,BABEMAX",
-        "setting": "police_station.png",
+        "setting": "cafe.jpg",
         "dialogues": [
             {
                 "dialogue_id": 1,
@@ -96,7 +96,7 @@
     {
         "scene_id": 4,
         "speakers": "MC,BABEMAX",
-        "setting": "police_station.png",
+        "setting": "manor.jpg",
         "dialogues": [
             {
                 "dialogue_id": 1,
@@ -124,7 +124,7 @@
     {
         "scene_id": 5,
         "speakers": "MC,BABEMAX",
-        "setting": "police_station.png",
+        "setting": "manor.jpg",
         "dialogues": [
             {
                 "dialogue_id": 1,
@@ -144,7 +144,7 @@
                 {
                     "response": "Let’s go chat with her acquaintances around here. See what they think.",
                     "effect": [4,0,-3,0],
-                    "sceneReference": 7
+                    "sceneReference": 9
                 }
             ]
         }
@@ -152,30 +152,7 @@
     {
         "scene_id": 6,
         "speakers": "MC,BABEMAX",
-        "setting": "police_station.png",
-        "dialogues": [
-            {
-                "dialogue_id": 1,
-                "speaker": "BABEMAX",
-                "text": "Hey [NAME]! I was able to extract some records from this phone Lizzi left behind."
-            }
-        ],
-        "interactive": {
-            "speaker": "BABEMAX",
-            "prompt": "Take a look at this.",
-            "choices": [
-                {
-                    "response": "Let's see it.",
-                    "effect": [0,0,0,0],
-                    "sceneReference": 8
-                }
-            ]
-        }
-    },
-    {
-        "scene_id": 7,
-        "speakers": "MC,BABEMAX",
-        "setting": "police_station.png",
+        "setting": "manor.jpg",
         "dialogues": [
             {
                 "dialogue_id": 1,
@@ -196,7 +173,7 @@
         }
     },
     {
-        "scene_id": 8,
+        "scene_id": 7,
         "speakers": "LIZZI,CORNELIUS",
         "setting": "police_station.png",
         "dialogues": [
@@ -216,7 +193,7 @@
                 "text": "Good. I don’t know why you’re always out so late at night, but please-zz do let m– zz bzzttt zz-"
             },
             {
-                "dialogue_id": 3,
+                "dialogue_id": 4,
                 "speaker": "CORNELIUS",
                 "text": "Lizzi..? Hello, Lizzi?!"
             }
@@ -226,15 +203,20 @@
             "prompt": "Oh there's one from her former boss Elon Tusk as well.",
             "choices": [
                 {
-                    "response": "Elon Tusk?.",
-                    "effect": [0,0,0,0],
+                    "response": "Elon Tusk? Why was he calling her? Babemax, show me that.",
+                    "effect": [1,0,0,2],
+                    "sceneReference": 9
+                },
+                {
+                    "response": "Hmm... Interesting... Can you show me that?",
+                    "effect": [-1,0,0,-2],
                     "sceneReference": 9
                 }
             ]
         }
     },
     {
-        "scene_id": 9,
+        "scene_id": 8,
         "speakers": "LIZZI,TUSK",
         "setting": "police_station.png",
         "dialogues": [
@@ -261,7 +243,86 @@
         ],
         "interactive": {
             "speaker": "BABEMAX",
-            "prompt": "",
+            "prompt": "Beep. Beep. Incoming call from Boss P.",
+            "choices": [
+                {
+                    "response": "I hope Boss P has good news for us!",
+                    "effect": [0,2,0,0],
+                    "sceneReference": 8
+                },
+                {
+                    "response": "Uh oh, why is Boss P calling...",
+                    "effect": [0,-2,0,0],
+                    "sceneReference": 8
+                }
+            ]
+        }
+    },
+    {
+        "scene_id": 9,
+        "speakers": "MC,BABEMAX",
+        "setting": "police_station.png",
+        "dialogues": [
+            {
+                "dialogue_id": 1,
+                "speaker": "BABEMAX",
+                "text": "Let’s go chat with her acquaintances around here. See what they think."
+            }
+        ],
+        "interactive": {
+            "speaker": "BABEMAX",
+            "prompt": "Who should we talk to first?",
+            "choices": [
+                {
+                    "response": "The spouse is always the most suspicious. Let's talk to her husband Cornelius.",
+                    "effect": [0,2,-3,0],
+                    "sceneReference": 10
+                },
+                {
+                    "response": "Based on the information I've gathered, she had a rocky relationship with her former boss Elon Tusk. Let's talk to him.",
+                    "effect": [0,-2,3,0],
+                    "sceneReference": 11
+                }
+            ]
+        }
+    },
+    {
+        "scene_id": 10,
+        "speakers": "MC,BABEMAX,CORNELIUS",
+        "setting": "police_station.png",
+        "dialogues": [
+            {
+                "dialogue_id": 1,
+                "speaker": "BABEMAX",
+                "text": "Hey [NAME]! I was able to extract some records from this phone Lizzi left behind."
+            }
+        ],
+        "interactive": {
+            "speaker": "BABEMAX",
+            "prompt": "Take a look at this call with her husband Cornelius.",
+            "choices": [
+                {
+                    "response": "Let's see it.",
+                    "effect": [0,0,0,0],
+                    "sceneReference": 8
+                }
+            ]
+        }
+    },
+    {
+        "scene_id": 11,
+        "speakers": "MC,BABEMAX,TUSK",
+        "setting": "police_station.png",
+        "dialogues": [
+            {
+                "dialogue_id": 1,
+                "speaker": "BABEMAX",
+                "text": "Hey [NAME]! I was able to extract some records from this phone Lizzi left behind."
+            }
+        ],
+        "interactive": {
+            "speaker": "BABEMAX",
+            "prompt": "Take a look at this call with her husband Cornelius.",
             "choices": [
                 {
                     "response": "Let's see it.",
