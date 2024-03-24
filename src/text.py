@@ -46,7 +46,7 @@ class Interactive:
 
         @property
         def response(self) -> str:
-            return self.response
+            return self._response
 
         @response.setter
         def response(self, value: str):
@@ -54,7 +54,7 @@ class Interactive:
 
         @property
         def scene_reference(self) -> int:
-            return self.scene_reference
+            return self._scene_reference
 
         @scene_reference.setter
         def scene_reference(self, value: int):
@@ -62,7 +62,7 @@ class Interactive:
 
         @property
         def effect(self) -> list[int]:
-            return self.effect
+            return self._effect
 
         @effect.setter
         def effect(self, value: list[int]):
@@ -93,7 +93,7 @@ class Interactive:
 
     @property
     def choices(self) -> list[Choice]:
-        return self.choices
+        return self._choices
 
     @choices.setter
     def choices(self, value: list):
@@ -101,7 +101,7 @@ class Interactive:
 
     @property
     def speaker(self) -> str:
-        return self.speaker
+        return self._speaker
 
     @speaker.setter
     def speaker(self, value: str):
@@ -109,7 +109,7 @@ class Interactive:
 
     @property
     def prompt(self) -> str:
-        return self.prompt
+        return self._prompt
 
     @prompt.setter
     def prompt(self, value: str):
