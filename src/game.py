@@ -67,24 +67,51 @@ class Game:
     def pj_score(self) -> int:
         return self.pj_score
 
-    def load_scenes_from_json(self, json_file_path) -> dict[Scene]:
+    def load_scenes_from_json(self, json_file_path) -> dict:
         """
-        Loads scenes from a JSON file and returns a dictionary mapping scene_id to scene data.
+        Loads scenes from a JSON file and returns a dictionary mapping scene_id to fully initialized Scene objects.
 
         Args:
             json_file_path (str): Path to the JSON file.
-
-        Returns:
-            dict: Dictionary mapping scene_id to scene data.
         """
         with open(json_file_path, "r") as file:
-            scenes = json.load(file)
+            scenes_data = json.load(file)
 
         scenes_dict = {}
-        # Iterate over each scene in the loaded list of scenes
-        for scene in scenes:
-            # Use the scene_id as the key and the entire scene as the value
-            scenes_dict[scene["scene_id"]] = scene
+        for scene_data in scenes_data:
+            # Construct Dialogue objects for each dialogue entry in the scene
+            dialogues = [
+                Dialogue(speaker=dialogue["speaker"], text=dialogue["text"])
+                for dialogue in scene_data.get("dialogues", [])
+            ]
+
+            # Construct Interactive.Choice objects for each choice in the interactive entry
+            choices_data = scene_data.get("interactive", {}).get("choices", [])
+            choices = [
+                Interactive.Choice(
+                    response=choice["response"],
+                    effect=choice["effect"],
+                    scene_reference=choice["sceneReference"],
+                )
+                for choice in choices_data
+            ]
+
+            # Construct the Interactive object
+            interactive = Interactive(
+                speaker=scene_data.get("interactive", {}).get("speaker", ""),
+                prompt=scene_data.get("interactive", {}).get("prompt", ""),
+                choices=choices,
+            )
+
+            # Initialize the Scene object with the constructed Dialogue and Interactive objects
+            scene = Scene(
+                setting=scene_data["setting"],
+                speakers=scene_data["speakers"].split(","),
+                dialogues=dialogues,
+                interactive=interactive,
+            )
+
+            scenes_dict[scene_data["scene_id"]] = scene
 
         return scenes_dict
 
