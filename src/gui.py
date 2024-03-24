@@ -1,5 +1,6 @@
 import pygame
 import sys
+import textwrap
 from game import Game, Scene
 from text import Dialogue, Interactive
 
@@ -53,10 +54,19 @@ def enter_avatars(character_list: list[str]):
 
         screen.blit(avatar, (image_x, image_y))
 
+def draw_text_wrapped(surface, text, pos, font, max_width, color):
+    """Draws text on a surface, wrapping words to stay within a specified width."""
+    words = textwrap.wrap(text, width=max_width)
+    x, y = pos
+    for word in words:
+        word_surface = font.render(word, True, color)
+        surface.blit(word_surface, (x, y))
+        y += font.get_linesize()  # Move to the next line
+
 def draw_dialogue_box(screen, text):
     """Draws a dialogue box at the bottom of the screen with the given text and a border."""
 
-    font = pygame.font.Font(None, 36)
+    font = pygame.font.Font(None, 25)
     # Dialogue box dimensions and position
     box_height = 100
     box_y = screen_height - box_height
@@ -68,12 +78,13 @@ def draw_dialogue_box(screen, text):
     outer_box_y = box_y - border_thickness
     outer_box_height = box_height + (2 * border_thickness)
 
-    # Render the text. True means anti-aliased text.
-    text_surface = font.render(text, True, BLACK)
+    # Define colors
+    BLACK = (0, 0, 0)
+    PURPLE = (128, 0, 128)
+    LIGHT_PINK = (255, 182, 193)
 
-    # Text positioning within the dialogue box
-    text_x = (screen_width - text_surface.get_width()) // 2
-    text_y = outer_box_y + (outer_box_height - text_surface.get_height()) // 2
+    # Maximum width for text
+    max_text_width = screen_width - (2 * border_thickness) - 20  # Adjust padding as needed
 
     # Draw the border box
     pygame.draw.rect(screen, PURPLE, [0, outer_box_y, screen_width, outer_box_height])
@@ -81,14 +92,17 @@ def draw_dialogue_box(screen, text):
     # Draw the inner dialogue box
     pygame.draw.rect(screen, LIGHT_PINK, [border_thickness, box_y, screen_width - (2 * border_thickness), box_height])
 
-    # Blit the text onto the screen
-    screen.blit(text_surface, (text_x, text_y))
+    # Text positioning within the dialogue box
+    text_x = (screen_width - max_text_width) // 2  # Center the text block
+    text_y = outer_box_y + (outer_box_height - box_height) // 2 + border_thickness
 
+    # Render and blit the wrapped text onto the screen
+    draw_text_wrapped(screen, text, (text_x, text_y), font, 60, BLACK)  # 60 characters, adjust as needed
 
 def draw_dialogue_box_with_options(screen, prompt, options, selected_option):
     """Draws a dialogue box with a prompt, multiple choice options, and a border."""
-    font = pygame.font.Font(None, 36)
-    box_height = 250  # Height to accommodate prompt and options
+    font = pygame.font.Font(None, 25)
+    box_height = 150  # Height to accommodate prompt and options
     box_y = screen_height - box_height
     border_thickness = 5  # Thickness of the border
     border_color = PURPLE  # Color of the border
@@ -107,10 +121,12 @@ def draw_dialogue_box_with_options(screen, prompt, options, selected_option):
     # Option positioning
     option_start_y = box_y + prompt_surface.get_height() + 20  # Start below the prompt
     option_padding = 5  # Padding between options
-    for index, option in enumerate(options):
+    for fuck, option in enumerate(options):
+        index = fuck + 1
         if index == selected_option:
             text_surface = font.render(option, True, BLACK, LIGHT_BLUE)
         else:
+            print(option)
             text_surface = font.render(option, True, BLACK)
 
         # Calculate y position of the option
@@ -161,10 +177,11 @@ if __name__ == "__main__":
             enter_avatars(curr_scene.speakers)
             #if there is still dialogue remaining
             if dialogue_progress_counter <= len(curr_dialogues) -1:
-                print(curr_dialogues[0].text)
                 draw_dialogue_box(screen, curr_dialogues[dialogue_progress_counter].text)
             else:
-                draw_dialogue_box_with_options(screen, curr_interactive.prompt, curr_interactive.choices,selected_answer)
+                choices_list = curr_interactive.choices
+                text_list = [choices_list[x].response for x in range(len(choices_list))]
+                draw_dialogue_box_with_options(screen, curr_interactive.prompt, text_list,selected_answer)
             # Update the display
             pygame.display.flip()
 
