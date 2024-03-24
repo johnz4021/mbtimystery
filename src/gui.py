@@ -127,7 +127,7 @@ if __name__ == "__main__":
     game = Game()
 
     def update_scene():
-        scene = game.get_current_scene()
+        scene = game.current_scene
         dialogues = scene.dialogues
         interactive = scene.interactive
         return scene, dialogues, interactive

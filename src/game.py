@@ -15,7 +15,6 @@ class Game:
         sn_score: int = 0,
         tf_score: int = 0,
         jp_score: int = 0,
-        current_scene: int = 1,
         name: str = "MC",
     ):
         """
@@ -26,46 +25,69 @@ class Game:
             sn_score (int, optional): Sensing vs. Intuition score on a scale of (-10, 10), where -10 is more Sensing and 10 is more Intuition.
             ft_score (int, optional): Feeling vs. Thinking score on a scale of (-10, 10), where -10 is more Feeling and 10 is more Thinking.
             pj_score (int, optional): Perceiving vs. Judging score on a scale of (-10, 10), where -10 is more Perceiving and 10 is more Judging .
-            
-            current_scene (int, optional): ID of the current scene. Defaults to 1.
             name (str, optional): Name of the Main Character (defaults to 'MC')
 
         """
-        
+
         # scenes (dict[int, Scene]): Dictionary mapping scene IDs to Scene objects, representing all possible scenes in the game.
         self.scenes = self.load_scenes_from_json("resources/scene.json")
-        self.current_scene = current_scene
-        
+        self.current_scene = self.scenes[0]
+
         # mb_score (list[int]): Myers-Briggs score, a list of integers consisting of ie, sn, ft, and pj scores.
         self.mb_score = [ie_score, sn_score, tf_score, jp_score]
 
     # TODO: SET NAME AT THE BEGINNING OF THE GAME
     @property
     def name(self) -> str:
-        """
-        Returns the name of the main character (MC).
-        """
-        return self.name
+        return self._name
+
+    @name.setter
+    def name(self, value: str):
+        self._name = value
 
     @property
     def ie_score(self) -> int:
-        return self.ie_score
+        return self._ie_score
+
+    @ie_score.setter
+    def ie_score(self, value: int):
+        self._ie_score = value
 
     @property
     def sn_score(self) -> int:
-        return self.sn_score
+        return self._sn_score
+
+    @sn_score.setter
+    def sn_score(self, value: int):
+        self._sn_score = value
 
     @property
     def ft_score(self) -> int:
-        return self.ft_score
+        return self._ft_score
+
+    @ft_score.setter
+    def ft_score(self, value: int):
+        self._ft_score = value
 
     @property
     def pj_score(self) -> int:
-        return self.pj_score
+        return self._pj_score
 
-    def load_scenes_from_json(self, json_file_path) -> dict:
+    @pj_score.setter
+    def pj_score(self, value: int):
+        self._pj_score = value
+
+    @property
+    def current_scene(self) -> Scene:
+        return self._current_scene
+
+    @current_scene.setter
+    def current_scene(self, value: Scene):
+        self._current_scene = value
+
+    def load_scenes_from_json(self, json_file_path) -> list[Scene]:
         """
-        Loads scenes from a JSON file and returns a dictionary mapping scene_id to fully initialized Scene objects.
+        Loads scenes from a JSON file and returns a list of fully initialized Scene objects.
 
         Args:
             json_file_path (str): Path to the JSON file.
@@ -73,43 +95,45 @@ class Game:
         with open(json_file_path, "r") as file:
             scenes_data = json.load(file)
 
-        scenes_dict = {}
+        scenes_list = []
+        
         for scene_data in scenes_data:
             # Construct Dialogue objects for each dialogue entry in the scene
-            dialogues = [
-                Dialogue(speaker=dialogue["speaker"], text=dialogue["text"])
-                for dialogue in scene_data.get("dialogues", [])
-            ]
+            dialogues = []
+            for dialogue in scene_data["dialogues"]:
+                speaker = dialogue["speaker"]
+                text = dialogue["text"]
+
+                dialogues.append(Dialogue(speaker, text))
 
             # Construct Interactive.Choice objects for each choice in the interactive entry
-            choices_data = scene_data.get("interactive", {}).get("choices", [])
-            choices = [
-                Interactive.Choice(
-                    response=choice["response"],
-                    effect=choice["effect"],
-                    scene_reference=choice["sceneReference"],
-                )
-                for choice in choices_data
-            ]
+            choices = []
 
-            # Construct the Interactive object
-            interactive = Interactive(
-                speaker=scene_data.get("interactive", {}).get("speaker", ""),
-                prompt=scene_data.get("interactive", {}).get("prompt", ""),
-                choices=choices,
-            )
+            for choice in scene_data["interactive"]["choices"]:
+                response = choice["response"]
+                effect = choice["effect"]
+                scene_reference = choice["sceneReference"]
 
-            # Initialize the Scene object with the constructed Dialogue and Interactive objects
+                choices.append(Interactive.Choice(response, effect, scene_reference))
+
+            # Construct the Interactive object (uses choices)
+            interactive_speaker = scene_data["interactive"]["speaker"]
+            interactive_prompt = scene_data["interactive"]["prompt"]
+
+            interactive = Interactive(interactive_speaker, interactive_prompt, choices)
+
+            # Initialize the Scene object
+            scene_id = scene_data["scene_id"]
+            scene_speakers = scene_data["speakers"].split(",")
+            scene_setting = scene_data["setting"]
+
             scene = Scene(
-                setting=scene_data["setting"],
-                speakers=scene_data["speakers"].split(","),
-                dialogues=dialogues,
-                interactive=interactive,
+                scene_id, scene_speakers, scene_setting, dialogues, interactive
             )
 
-            scenes_dict[scene_data["scene_id"]] = scene
+            scenes_list.append(scene)
 
-        return scenes_dict
+        return scenes_list
 
     def get_current_scene_id(self) -> int:
         """
@@ -120,23 +144,6 @@ class Game:
         """
 
         return self.current_scene.scene_id
-
-    def get_current_scene(self) -> Scene:
-        """
-        Returns the current scene
-
-        Returns:
-            Scene: The current scene.
-        """
-        # Fetch the scene data for the current scene ID
-        scene_data = self.scenes.get(self.current_scene)
-        if scene_data:
-            # Initialize and return a Scene object with the fetched data
-            return Scene(scene_data)
-        else:
-            # Handle the case where the scene ID is not found
-            print(f"Scene with ID {self.current_scene} not found.")
-            return None
 
     def update_scores(self, player_choice: Interactive.Choice) -> None:
         """
