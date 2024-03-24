@@ -333,9 +333,8 @@ if __name__ == "__main__":
                         game.process_scene(selected_answer)
                         #update scene stuff
                         curr_scene, curr_dialogues, curr_interactive = update_scene()
-                        print("2")
-                        print(curr_scene)
-                        dialogue_progress_counter = 0 
+                        selected_answer = 1
+                        dialogue_progress_counter = 0
 
     # Quit Pygame
     pygame.quit()
