@@ -23,10 +23,11 @@ class Scene:
             dialogues (List[Dialogue]): A list of Dialogue objects representing the scene's dialogues.
             interactive (Interactive): An Interactive object representing the scene's choice-based interactive segment.
         """
-        self.speakers = speakers
-        self.setting = setting
-        self.dialogues = dialogues
-        self.interactive = interactive
+        self._scene_id = scene_id
+        self._speakers = speakers
+        self._setting = setting
+        self._dialogues = dialogues
+        self._interactive = interactive
 
     @property
     def scene_id(self) -> int:
@@ -67,3 +68,8 @@ class Scene:
     @interactive.setter
     def interactive(self, value: Interactive):
         self._interactive = value
+        
+    def __str__(self):
+            dialogues_str = ", ".join([str(dialogue) for dialogue in self._dialogues])
+            interactive_str = str(self._interactive)
+            return f"Scene ID: {self._scene_id}\nSpeakers: {', '.join(self._speakers)}\nSetting: {self._setting}\nDialogues: {dialogues_str}\nInteractive: {interactive_str}"

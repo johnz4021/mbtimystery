@@ -28,10 +28,15 @@ class Game:
             name (str, optional): Name of the Main Character (defaults to 'MC')
 
         """
+        self._name = name
+        self._ie_score = ie_score
+        self._sn_score = sn_score
+        self._ft_score = tf_score
+        self._pj_score = jp_score
 
         # scenes (dict[int, Scene]): Dictionary mapping scene IDs to Scene objects, representing all possible scenes in the game.
         self.scenes = self.load_scenes_from_json("resources/scene.json")
-        self.current_scene = self.scenes[0]
+        self.current_scene = self.scenes[0] if self.scenes else None
 
         # mb_score (list[int]): Myers-Briggs score, a list of integers consisting of ie, sn, ft, and pj scores.
         self.mb_score = [ie_score, sn_score, tf_score, jp_score]
@@ -96,7 +101,7 @@ class Game:
             scenes_data = json.load(file)
 
         scenes_list = []
-        
+
         for scene_data in scenes_data:
             # Construct Dialogue objects for each dialogue entry in the scene
             dialogues = []
@@ -134,11 +139,11 @@ class Game:
             scenes_list.append(scene)
 
         return scenes_list
-    
+
     def replace_name_in_json(json_data, new_name):
         """
         Replaces all instances of [Name] or [NAME] in the JSON data with the specified new_name.
-        
+
         Args:
             json_data (list): The JSON data loaded into Python as a list or dict.
             new_name (str): The new name to replace [Name] or [NAME] with.
@@ -146,14 +151,16 @@ class Game:
         if isinstance(json_data, dict):
             for key, value in json_data.items():
                 if isinstance(value, str):
-                    json_data[key] = value.replace("[Name]", new_name).replace("[NAME]", new_name)
+                    json_data[key] = value.replace("[Name]", new_name).replace(
+                        "[NAME]", new_name
+                    )
                 elif isinstance(value, (dict, list)):
                     replace_name_in_json(value, new_name)
         elif isinstance(json_data, list):
             for item in json_data:
                 if isinstance(item, (dict, list)):
                     replace_name_in_json(item, new_name)
-                    
+
     def get_current_scene_id(self) -> int:
         """
         Returns the current scene id number.
@@ -172,36 +179,38 @@ class Game:
         effects = player_choice.effect  # ie. "[#,#,#,#]""
 
         # Update ie_score
-        if effects[0] > 0 and (effects[0] + self.ie_score > 10):
-            self.ie_score = 10
-        elif effects[0] < 0 and (effects[0] + self.ie_score < -10):
-            self.ie_score = -10
+        if effects[0] > 0 and (effects[0] + self._ie_score > 10):
+            self._ie_score = 10
+        elif effects[0] < 0 and (effects[0] + self._ie_score < -10):
+            self._ie_score = -10
         else:
-            self.ie_score += effects[0]
+            self._ie_score += effects[0]
 
         # Update sn_score
-        if effects[1] > 0 and (effects[1] + self.sn_score > 10):
-            self.sn_score = 10
-        elif effects[1] < 0 and (effects[1] + self.sn_score < -10):
-            self.sn_score = -10
+        if effects[1] > 0 and (effects[1] + self._sn_score > 10):
+            self._sn_score = 10
+        elif effects[1] < 0 and (effects[1] + self._sn_score < -10):
+            self._sn_score = -10
         else:
-            self.sn_score += effects[1]
+            self._sn_score += effects[1]
 
         # Update ft_score
-        if effects[2] > 0 and (effects[2] + self.ft_score > 10):
-            self.ft_score = 10
-        elif effects[2] < 0 and (effects[2] + self.ft_score < -10):
-            self.ft_score = -10
+        if effects[2] > 0 and (effects[2] + self._ft_score > 10):
+            self._ft_score = 10
+        elif effects[2] < 0 and (effects[2] + self._ft_score < -10):
+            self._ft_score = -10
         else:
-            self.ft_score += effects[2]
+            self._ft_score += effects[2]
 
         # Update pj_score
-        if effects[3] > 0 and (effects[3] + self.pj_score > 10):
-            self.pj_score = 10
-        elif effects[3] < 0 and (effects[3] + self.pj_score < -10):
-            self.pj_score = -10
+        if effects[3] > 0 and (effects[3] + self._pj_score > 10):
+            self._pj_score = 10
+        elif effects[3] < 0 and (effects[3] + self._pj_score < -10):
+            self._pj_score = -10
         else:
-            self.pj_score += effects[3]
+            self._pj_score += effects[3]
+        
+        self.mb_score = [self._ie_score, self._sn_score, self._ft_score, self._pj_score]
 
     # NOTE: This method may be the culprit of issues
     def process_scene(self, player_decision: int) -> None:
@@ -211,8 +220,14 @@ class Game:
         Args:
             player_decision (int): The number the player chooses from the list of choices from the current scene's interactive. This determines the effect and reference scene id (ie. the new scene).
         """
+        # for scene in self.scenes:
+        #     print(scene)
         # the choice the player chooses in the current scene (Choice object)
         player_choice = self.current_scene.interactive.choices[player_decision - 1]
+        print(player_choice)
         self.update_scores(player_choice)
-        # change the current scene to the new scene
-        self.current_scene = self.scenes.get(player_choice.scene_reference)
+        print(self.mb_score)
+        # change the current scene to the new scene (-1 bc list index)
+        print(player_choice.scene_reference - 1)
+        self.current_scene = self.scenes[player_choice.scene_reference - 1]
+        # print(self.current_scene)
