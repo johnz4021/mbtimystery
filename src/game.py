@@ -106,3 +106,11 @@ class Game:
             # Handle the case where the scene ID is not found
             print(f"Scene with ID {self.current_scene} not found.")
             return None
+    
+    def change_current_scene(self, player_decision: int) -> None:
+        """
+        Updates the current scene in the game based on the player decision (usually 1-4).
+
+        Args:
+            choice_id (_type_): The number the player chooses from the list of choices from the current scene's interactive. This determines the reference scene id (ie. the new scene).
+        """
