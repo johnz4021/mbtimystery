@@ -104,14 +104,14 @@
             "prompt": "BABEMAX: Anyways, which direction would you like to go with our investigation?",
             "choices": [
                 {
-                    "response": "[in progress] Identify potential culprits based on financial motives",
-                    "effect": [0,0,5,0],
-                    "sceneReference": 4
-                },
-                {
                     "response": "Learn more about Lizzi’s personal relationships",
                     "effect": [0,0,-5,0],
                     "sceneReference": 5
+                },
+                {
+                    "response": "[in progress] Identify potential culprits based on financial motives",
+                    "effect": [0,0,5,0],
+                    "sceneReference": 4
                 }
             ]
         }
@@ -157,7 +157,7 @@
         ],
         "interactive": {
             "speaker": "BABEMAX",
-            "prompt": "BABEMAX: What do you say?",
+            "prompt": "BABEMAX: What should we do?",
             "choices": [
                 {
                     "response": "We should look for her phone records.",
@@ -165,7 +165,7 @@
                     "sceneReference": 6
                 },
                 {
-                    "response": "Let’s go talk to them directly. See what they have to say.",
+                    "response": "Let’s go talk to them directly.",
                     "effect": [4,0,-3,0],
                     "sceneReference": 9
                 }
@@ -289,7 +289,7 @@
             {
                 "dialogue_id": 1,
                 "speaker": "BABEMAX",
-                "text": "BABEMAX: Let’s go chat with her acquaintances. See what they have to say."
+                "text": "BABEMAX: Let’s see what they have to say."
             }
         ],
         "interactive": {
@@ -611,7 +611,7 @@
             {
                 "dialogue_id": 1,
                 "speaker": "BOSSP",
-                "text": "BOSS P: Your judgment has guided us thus far and will lead us to the conclusion of this case. Now, will you move to convict and close this chapter of our city’s story, or is there still a doubt in your heart that calls for a deeper search for absolute certainty?"
+                "text": "BOSS P: Your judgment has guided us thus far and will lead us to the conclusion of this case."
             },
             {
                 "dialogue_id": 2,
