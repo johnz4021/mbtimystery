@@ -40,7 +40,7 @@ def enter_avatars(character_list: list[str]):
                                    "BIRB": "resources/images/birb.PNG",
                                    "CORNELIUS": "resources/images/cornelius.PNG",
                                    "TUSK": "resources/images/tusk.PNG",
-                                   "LIZZI": "resources/images/raven.PNG"}
+                                   "LIZZI": "resources/images/lizzy.PNG"}
 
     avatar_url_list = [avatar_dict[x] for x in character_list]
 
