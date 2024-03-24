@@ -1,6 +1,7 @@
 import pygame
 import sys
-from gamelogic import Game, Scene, Text, Dialogue, Interactive
+from game import Game, Scene
+from text import Dialogue, Interactive
 
 screen_width = 800
 screen_height = 600
@@ -110,12 +111,13 @@ def draw_dialogue_box_with_options(screen, prompt, options, selected_option):
         option_y = option_start_y + index * (text_surface.get_height() + option_padding)
         screen.blit(text_surface, (20 + border_thickness, option_y))  # Adjust for border
 
-def update_scene():
-    curr_scene = game.get_current_scene()
-    curr_dialogues = curr_scene.dialogues
-    curr_interactive = curr_scene.interactive
 
-    return curr_scene,curr_dialogues, curr_interactive
+def update_scene():
+    scene = game.get_current_scene()
+    dialogues = curr_scene.dialogues
+    interactive = curr_scene.interactive
+
+    return scene, dialogues, interactive
 
 
 if __name__ == "__main__":
@@ -130,7 +132,6 @@ if __name__ == "__main__":
     game = Game
 
     #Variable scene content
-
     curr_scene, curr_dialogues, curr_interactive = update_scene()
     #Counters
     dialogue_progress_counter = 0
