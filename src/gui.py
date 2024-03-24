@@ -1,6 +1,6 @@
 import pygame
 import sys
-from gamelogic import Game, Scene
+from game import Game, Scene
 from text import Dialogue, Interactive
 
 screen_width = 800
@@ -134,7 +134,7 @@ if __name__ == "__main__":
     title_screen_check = 0
 
     def update_scene():
-        scene = game.current_scene()
+        scene = game.current_scene
         dialogues = scene.dialogues
         interactive = scene.interactive
         return scene, dialogues, interactive
