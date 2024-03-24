@@ -37,8 +37,10 @@ def show_title_screen():
 def enter_avatars(character_list: list[str]):
     avatar_dict: dict[str, str] = {"BOSSP":"resources/images/bossp.PNG",
                                    "BABEMAX": "resources/images/babemax.PNG",
-                                   "RAVEN": "resources/images/raven.PNG",
-                                   "CORNELIUS": "resources/images/cornelius.PNG"}
+                                   "BIRB": "resources/images/birb.PNG",
+                                   "CORNELIUS": "resources/images/cornelius.PNG",
+                                   "TUSK": "resources/images/tusk.PNG",
+                                   "LIZZI": "resources/images/lizzy.PNG"}
 
     avatar_url_list = [avatar_dict[x] for x in character_list]
 

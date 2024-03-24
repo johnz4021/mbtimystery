@@ -229,5 +229,5 @@ class Game:
         print(self.mb_score)
         # change the current scene to the new scene (-1 bc list index)
         print(player_choice.scene_reference - 1)
-        self.current_scene = self.scenes[player_choice.scene_reference - 1]
-        # print(self.current_scene)
+        self.current_scene = self.scenes[player_choice.scene_reference]
+        print(self.current_scene)
