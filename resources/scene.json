@@ -81,7 +81,7 @@
             "prompt": "Anyways, which direction would you like to go with our investigation?",
             "choices": [
                 {
-                    "response": "Identify potential culprits based on financial motives",
+                    "response": "[in progress] Identify potential culprits based on financial motives",
                     "effect": [0,0,5,0],
                     "sceneReference": 4
                 },
