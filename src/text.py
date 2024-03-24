@@ -1,5 +1,4 @@
 from abc import ABC
-from character import Character
 
 
 class Text(ABC):
