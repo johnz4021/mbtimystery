@@ -145,8 +145,6 @@ if __name__ == "__main__":
         # Fill the screen with a color to clear it
         screen.fill((255, 229, 204))  # Change the RGB values if you want a different background color
 
-        enter_background("uchi")
-        enter_avatars(["bossp", "babemax"])
         enter_background(curr_scene.setting)
         enter_avatars(curr_scene.speakers)
         #if there is still dialogue remaining
