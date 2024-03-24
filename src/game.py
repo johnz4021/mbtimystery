@@ -10,6 +10,7 @@ class Game:
 
     def __init__(
         self,
+        name: str,
         mb_score: list[int],
         ie_score: int,
         sn_score: int,
@@ -22,15 +23,17 @@ class Game:
         Constructor for game logic
 
         Args:
-            mb_score: Myers-Briggs score which is a list of integers consisting of ie, sn, tf, and jp scores.
-            ie_score: Introverted vs. Extroverted score on scale (-10, 10) where -10 is introverted and 10 is extroverted.
-            sn_score(): Introverted vs. Extroverted score on scale (-10, 10) where -10 is introverted and 10 is extroverted.
-            tf_score():
-            jp_score():
-            scenes (list): List of scene data parsed from JSON.
+            mc_name (str): Name of the Main Character (defaults to 'MC')
+            mb_score (list[int]): Myers-Briggs score, a list of integers consisting of ie, sn, tf, and jp scores.
+            ie_score (int): Introverted vs. Extroverted score on a scale of (-10, 10), where -10 is fully introverted and 10 is fully extroverted.
+            sn_score (int): Sensing vs. Intuition score on a scale of (-10, 10), where -10 leans towards Sensing and 10 towards Intuition.
+            tf_score (int): Thinking vs. Feeling score on a scale of (-10, 10), where -10 is more Thinking-oriented and 10 is more Feeling-oriented.
+            jp_score (int): Judging vs. Perceiving score on a scale of (-10, 10), where -10 favors Judging and 10 favors Perceiving.
+            scenes (dict[int, Scene]): Dictionary mapping scene IDs to Scene objects, representing all possible scenes in the game.
             current_scene (int, optional): ID of the current scene. Defaults to 1.
 
         """
+        self.name = "MC"
         self.ie_score = 0
         self.sn_score = 0
         self.tf_score = 0
@@ -38,6 +41,13 @@ class Game:
         self.scenes = self.load_scenes_from_json("resources\scene.json")
         self.current_scene = current_scene
         self.mb_score = [ie_score, sn_score, tf_score, jp_score]
+    
+    @property
+    def name(self) -> str:
+        """
+        Returns the name of the main character (MC).
+        """
+        return self.name
 
     def load_scenes_from_json(self, json_file_path):
         """
