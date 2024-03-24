@@ -187,7 +187,7 @@ if __name__ == "__main__":
                         dialogue_progress_counter += 1
                     elif dialogue_progress_counter > len(curr_dialogues) -1:
                         #return number to the game
-
+                        game.process_scene(selected_answer)
                         #update scene stuff
                         update_scene()
                         dialogue_progress_counter = 0 
