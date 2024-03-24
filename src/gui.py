@@ -112,12 +112,7 @@ def draw_dialogue_box_with_options(screen, prompt, options, selected_option):
         screen.blit(text_surface, (20 + border_thickness, option_y))  # Adjust for border
 
 
-def update_scene():
-    scene = game.get_current_scene()
-    dialogues = curr_scene.dialogues
-    interactive = curr_scene.interactive
 
-    return scene, dialogues, interactive
 
 
 if __name__ == "__main__":
@@ -129,7 +124,13 @@ if __name__ == "__main__":
     pygame.init()
     screen = pygame.display.set_mode((screen_width, screen_height))
     pygame.display.set_caption('Mood Mystery')
-    game = Game
+    game = Game()
+
+    def update_scene():
+        scene = game.get_current_scene()
+        dialogues = scene.dialogues
+        interactive = scene.interactive
+        return scene, dialogues, interactive
 
     #Variable scene content
     curr_scene, curr_dialogues, curr_interactive = update_scene()

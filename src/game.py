@@ -31,10 +31,9 @@ class Game:
             name (str, optional): Name of the Main Character (defaults to 'MC')
 
         """
-        self.name = "MC"
         
         # scenes (dict[int, Scene]): Dictionary mapping scene IDs to Scene objects, representing all possible scenes in the game.
-        self.scenes = self.load_scenes_from_json("resources\scene.json")
+        self.scenes = self.load_scenes_from_json("resources/scene.json")
         self.current_scene = current_scene
         
         # mb_score (list[int]): Myers-Briggs score, a list of integers consisting of ie, sn, ft, and pj scores.
