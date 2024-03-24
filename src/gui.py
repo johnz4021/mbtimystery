@@ -145,8 +145,8 @@ if __name__ == "__main__":
         # Fill the screen with a color to clear it
         screen.fill((255, 229, 204))  # Change the RGB values if you want a different background color
 
-        enter_background("uchi")
-        enter_avatars(["bossp", "babemax"])
+        enter_background(curr_scene.setting)
+        enter_avatars(curr_scene.chara)
         #if there is still dialogue remaining
         if dialogue_progress_counter <= len(curr_dialogues) -1:
             draw_dialogue_box(screen, curr_dialogues[dialogue_progress_counter].text)
@@ -177,7 +177,7 @@ if __name__ == "__main__":
                         dialogue_progress_counter += 1
                     elif dialogue_progress_counter > len(curr_dialogues) -1:
                         #return number to the game
-
+                        game.process_scene(selected_answer)
                         #update scene stuff
                         update_scene()
                         dialogue_progress_counter = 0 
