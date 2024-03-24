@@ -66,7 +66,7 @@ def draw_text_wrapped(surface, text, pos, font, max_width, color):
 def draw_dialogue_box(screen, text):
     """Draws a dialogue box at the bottom of the screen with the given text and a border."""
 
-    font = pygame.font.Font(None, 25)
+    font = pygame.font.Font(None, 27)
     # Dialogue box dimensions and position
     box_height = 100
     box_y = screen_height - box_height
@@ -97,7 +97,7 @@ def draw_dialogue_box(screen, text):
     text_y = outer_box_y + (outer_box_height - box_height) // 2 + border_thickness
 
     # Render and blit the wrapped text onto the screen
-    draw_text_wrapped(screen, text, (text_x, text_y), font, 60, BLACK)  # 60 characters, adjust as needed
+    draw_text_wrapped(screen, text, (text_x, text_y), font, 80, BLACK)  # 60 characters, adjust as needed
 
 
 def draw_text_wrapped_2(surface, text, pos, font, max_width, color, bg_color=None):
