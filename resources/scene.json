@@ -7,22 +7,22 @@
             {
                 "dialogue_id": 1,
                 "speaker": "BOSSP",
-                "text": "Agent [Name], the city of Chicago has given us 24 hours to crack this case."
+                "text": "BOSS P: Agent Incognito, the city of Chicago has given us 24 hours to crack this case."
             },
             {
                 "dialogue_id": 2,
                 "speaker": "BOSSP",
-                "text": "To aid you through this, I have sent Babemax as your personal assistant for this investigation. I’ve texted you his location."
+                "text": "BOSS P: To aid you through this, I have sent Babemax as your personal assistant for this investigation. I’ve texted you his location."
             },
             {
                 "dialogue_id": 3,
                 "speaker": "BOSSP",
-                "text": "Work closely and let nothing deter you from unveiling the truth."
+                "text": "BOSS P: Work closely and let nothing deter you from unveiling the truth."
             }
         ],
         "interactive": {
             "speaker": "BOSSP",
-            "prompt": "What do you think?",
+            "prompt": "BOSS P: What do you think?",
             "choices": [
                 {
                     "response": "Got it, Boss! With Babemax, I’ll look into every detail. I’m ready to make a strategic plan to uncover the truth.",
@@ -45,12 +45,35 @@
             {
                 "dialogue_id": 1,
                 "speaker": "BOSSP",
-                "text": "That’s precisely what I like to hear. Now, get cracking!"
+                "text": "BOSS P: That’s precisely what I like to hear."
+            }
+        ],
+        "interactive": {
+            "speaker": "BOSSP",
+            "prompt": "BOSS P: Now, get cracking!",
+            "choices": [
+                {
+                    "response": "Absolutely boss!",
+                    "effect": [0,0,0,0],
+                    "sceneReference": 30
+                }
+            ]
+        }
+    },
+    {
+        "scene_id": 30,
+        "speakers": "BABEMAX",
+        "setting": "downtown_chicago.jpg",
+        "dialogues": [
+            {
+                "dialogue_id": 1,
+                "speaker": "BABEMAX",
+                "text": "BABEMAX: zzzzz... erm... "
             }
         ],
         "interactive": {
             "speaker": "BABEMAX",
-            "prompt": "zzzzz... erm... Oh hello [Name]",
+            "prompt": "BABEMAX: Oh hello Agent Incognito",
             "choices": [
                 {
                     "response": "Why were you sleeping if you’re a robot...?",
@@ -73,12 +96,12 @@
             {
                 "dialogue_id": 1,
                 "speaker": "BABEMAX",
-                "text": "Haha although I’m mostly automated, I feel sensations like hunger and fatigue. Gotta get my beauty sleep, y’know?"
+                "text": "BABEMAX: Haha although I’m mostly automated, I feel sensations like hunger and fatigue. Gotta get my beauty sleep, y’know?"
             }
         ],
         "interactive": {
             "speaker": "BABEMAX",
-            "prompt": "Anyways, which direction would you like to go with our investigation?",
+            "prompt": "BABEMAX: Anyways, which direction would you like to go with our investigation?",
             "choices": [
                 {
                     "response": "Identify potential culprits based on financial motives",
@@ -101,12 +124,12 @@
             {
                 "dialogue_id": 1,
                 "speaker": "BABEMAX",
-                "text": "Don’t worry, we were given permission to enter Lizzi’s house to find evidence."
+                "text": "BABEMAX: Don’t worry, we were given permission to enter Lizzi’s house to find evidence."
             }
         ],
         "interactive": {
             "speaker": "BABEMAX",
-            "prompt": "Choice",
+            "prompt": "BABEMAX: Make a choice!",
             "choices": [
                 {
                     "response": "Option 1",
@@ -129,12 +152,12 @@
             {
                 "dialogue_id": 1,
                 "speaker": "BABEMAX",
-                "text": "That is Lizzi’s house down the road. We could ask around this neighborhood to find clues."
+                "text": "BABEMAX: That is Lizzi’s house down the road. We could ask around this neighborhood to find clues."
             }
         ],
         "interactive": {
             "speaker": "BABEMAX",
-            "prompt": "What do you say?",
+            "prompt": "BABEMAX: What do you say?",
             "choices": [
                 {
                     "response": "We should look for her phone records.",
@@ -157,12 +180,12 @@
             {
                 "dialogue_id": 1,
                 "speaker": "BABEMAX",
-                "text": "Hey [NAME]! I was able to extract some records from this phone Lizzi left behind."
+                "text": "BABEMAX: Hey Agent Incognito! I was able to extract some records from this phone Lizzi left behind."
             }
         ],
         "interactive": {
             "speaker": "BABEMAX",
-            "prompt": "Take a look at this call with her husband Cornelius.",
+            "prompt": "BABEMAX: Take a look at this call with her husband Cornelius.",
             "choices": [
                 {
                     "response": "Let's see it.",
@@ -180,27 +203,27 @@
             {
                 "dialogue_id": 1,
                 "speaker": "LIZZI",
-                "text": "Cornelius! When are you thinking of coming back? It’s already 1 am."
+                "text": "LIZZI: Cornelius! When are you thinking of coming back? It’s already 1 am."
             },
             {
                 "dialogue_id": 2,
                 "speaker": "CORNELIUS",
-                "text": "Sorry honey, didn’t see the time pass. I’ll head back now."
+                "text": "CORNELIUS: Sorry honey, didn’t see the time pass. I’ll head back now."
             },
             {
                 "dialogue_id": 3,
                 "speaker": "LIZZI",
-                "text": "Good. I don’t know why you’re always out so late at night, but please-zz do let m– zz bzzttt zz-"
+                "text": "LIZZI: Good. I don’t know why you’re always out so late at night, but please-zz do let m– zz bzzttt zz-"
             },
             {
                 "dialogue_id": 4,
                 "speaker": "CORNELIUS",
-                "text": "Lizzi..? Hello, Lizzi?!"
+                "text": "CORNELIUS: Lizzi..? Hello, Lizzi?!"
             }
         ],
         "interactive": {
             "speaker": "BABEMAX",
-            "prompt": "Oh there's one with her former boss Elon Tusk as well.",
+            "prompt": "BABEMAX: Oh there's one with her former boss Elon Tusk as well.",
             "choices": [
                 {
                     "response": "Elon Tusk? Why was he calling her? Babemax, show me that.",
@@ -223,27 +246,27 @@
             {
                 "dialogue_id": 1,
                 "speaker": "TUSK",
-                "text": "Lizzi, how long do you plan to let Cornelius leech off of you? "
+                "text": "TUSK: Lizzi, how long do you plan to let Cornelius leech off of you? "
             },
             {
                 "dialogue_id": 2,
                 "speaker": "LIZZI",
-                "text": "Don’t talk like that about my husband! He deserves some rest from work."
+                "text": "LIZZI: Don’t talk like that about my husband! He deserves some rest from work."
             },
             {
                 "dialogue_id": 3,
                 "speaker": "TUSK",
-                "text": "Fine. But he’s been doing nothing for years now—he also doesn't treat you well. Don’t let him drag you down."
+                "text": "TUSK: Fine. But he’s been doing nothing for years now—he also doesn't treat you well. Don’t let him drag you down."
             },
             {
                 "dialogue_id": 4,
                 "speaker": "LIZZI",
-                "text": "That’s for me to decide. And stop calling me outside work."
+                "text": "LIZZI: That’s for me to decide. And stop calling me outside work."
             }
         ],
         "interactive": {
             "speaker": "BABEMAX",
-            "prompt": "Beep. Beep. Incoming call from Boss P.",
+            "prompt": "BABEMAX: Beep. Beep. Incoming call from Boss P.",
             "choices": [
                 {
                     "response": "I hope Boss P has good news for us!",
@@ -266,12 +289,12 @@
             {
                 "dialogue_id": 1,
                 "speaker": "BABEMAX",
-                "text": "Let’s go chat with her acquaintances. See what they have to say."
+                "text": "BABEMAX: Let’s go chat with her acquaintances. See what they have to say."
             }
         ],
         "interactive": {
             "speaker": "BABEMAX",
-            "prompt": "Who should we talk to first?",
+            "prompt": "BABEMAX: Who should we talk to first?",
             "choices": [
                 {
                     "response": "The lover is always the most suspicious. Let's talk to her husband Cornelius.",
@@ -294,12 +317,12 @@
             {
                 "dialogue_id": 1,
                 "speaker": "BABEMAX",
-                "text": "Wassup Cornelius!"
+                "text": "BABEMAX: Wassup Cornelius!"
             }
         ],
         "interactive": {
             "speaker": "BABEMAX",
-            "prompt": "Beep. Beep. Incoming call from Boss P.",
+            "prompt": "BABEMAX: Beep. Beep. Incoming call from Boss P.",
             "choices": [
                 {
                     "response": "I hope Boss P has good news for us!",
@@ -322,12 +345,12 @@
             {
                 "dialogue_id": 1,
                 "speaker": "BABEMAX",
-                "text": "Wassup Tusk!"
+                "text": "BABEMAX: Wassup Tusk!"
             }
         ],
         "interactive": {
             "speaker": "BABEMAX",
-            "prompt": "Beep. Beep. Urgent message from Boss P. We have to meet him ASAP",
+            "prompt": "BABEMAX: Beep. Beep. Urgent message from Boss P. We have to meet him ASAP",
             "choices": [
                 {
                     "response": "I hope Boss P has good news for us!",
@@ -349,28 +372,28 @@
         "dialogues": [
             {
                 "dialogue_id": 1,
-                "speaker": "BOSSP",
-                "text": "Agent [NAME] and Agent Babemax, I have some new information to relay to you."
+                "speaker": "BOSS P",
+                "text": "BOSSP: Agent Incognito and Agent Babemax, I have some new information to relay to you."
             },
             {
                 "dialogue_id": 2,
                 "speaker": "BOSSP",
-                "text": "We just completed a forensics analysis and have tracked down the murderer’s identity. They are a high-ranking member of the underground assassin’s guild."
+                "text": "BOSS P: We just completed a forensics analysis and have tracked down the murderer’s identity. They are a high-ranking member of the underground assassin’s guild."
             },
             {
                 "dialogue_id": 3,
                 "speaker": "BOSSP",
-                "text": "We also found that they were hired by Company X around the time Lizzi died."
+                "text": "BOSS P: We also found that they were hired by Company X around the time Lizzi died."
             },
             {
                 "dialogue_id": 4,
                 "speaker": "BABEMAX",
-                "text": "Oh sus… Well [NAME],"
+                "text": "BABEMAX: Oh sus… Well Agent Incognito,"
             }
         ],
         "interactive": {
             "speaker": "BABEMAX",
-            "prompt": "what do you think we should do next?",
+            "prompt": "BABEMAX: what do you think we should do next?",
             "choices": [
                 {
                     "response": "Let’s infiltrate Company X undercover.",
@@ -393,12 +416,12 @@
             {
                 "dialogue_id": 1,
                 "speaker": "BABEMAX",
-                "text": "Hey check this out! I was able to decrypt this guarded file from Company X’s server and it seems to mention Lizzi along with another name… “Birb?” New name to me, wonder who she is."
+                "text": "BABEMAX: Hey check this out! I was able to decrypt this guarded file from Company X’s server and it seems to mention Lizzi along with another name… “Birb?” New name to me, wonder who she is."
             }
         ],
         "interactive": {
             "speaker": "BABEMAX",
-            "prompt": "Who do you want to approach and talk to further?",
+            "prompt": "BABEMAX: Who do you want to approach and talk to further?",
             "choices": [
                 {
                     "response": "Search the area and find Birb.",
@@ -421,12 +444,12 @@
             {
                 "dialogue_id": 1,
                 "speaker": "BIRB",
-                "text": "Oh goodness! Don’t sneak up on me like that."
+                "text": "BIRB: Oh goodness! Don’t sneak up on me like that."
             }
         ],
         "interactive": {
-            "speaker": "BABEMAX",
-            "prompt": "Who are you and what do you want?",
+            "speaker": "BIRB",
+            "prompt": "BIRB: Who are you and what do you want?",
             "choices": [
                 {
                     "response": "Sorry, I didn't mean to surprise you. Just wanted to chat!",
@@ -449,32 +472,32 @@
             {
                 "dialogue_id": 1,
                 "speaker": "BIRB",
-                "text": "Oh I recognize you from the news. Wait wait don’t hurt me, you’ve come to the right person to talk to. "
+                "text": "BIRB: Oh I recognize you from the news. Wait wait don’t hurt me, you’ve come to the right person to talk to. "
             },
             {
                 "dialogue_id": 2,
                 "speaker": "BIRB",
-                "text": "If you’ve talked with Elon Tusk before, I’m sure he never brought this full story out:"
+                "text": "BIRB: If you’ve talked with Elon Tusk before, I’m sure he never brought this full story out:"
             },
             {
                 "dialogue_id": 3,
                 "speaker": "BIRB",
-                "text": "back when Lizzi was still an employee at Company X, they were stealing her personal research on longevity pills as their own and didn’t give any credit to her."
+                "text": "BIRB: back when Lizzi was still an employee at Company X, they were stealing her personal research on longevity pills as their own and didn’t give any credit to her."
             },
             {
                 "dialogue_id": 4,
                 "speaker": "BIRB",
-                "text": "In the end, she decided to leave with her research. It was sad to see her leave, as she was my research partner, but I thought that it was for the best."
+                "text": "BIRB: In the end, she decided to leave with her research. It was sad to see her leave, as she was my research partner, but I thought that it was for the best."
             },
             {
                 "dialogue_id": 5,
                 "speaker": "BIRB",
-                "text": "That must’ve angered Tusk though."
+                "text": "BIRB: That must’ve angered Tusk though."
             }
         ],
         "interactive": {
             "speaker": "BABEMAX",
-            "prompt": "Beep. Beep. Report to Boss P. It's time to decide",
+            "prompt": "BABEMAX: Beep. Beep. Report to Boss P. It's time to decide",
             "choices": [
                 {
                     "response": "Okay Babemax, take me to Boss P",
@@ -492,32 +515,32 @@
             {
                 "dialogue_id": 1,
                 "speaker": "TUSK",
-                "text": "Ah, I see you’ve come back to talk with me."
+                "text": "TUSK: Ah, I see you’ve come back to talk with me."
             },
             {
                 "dialogue_id": 2,
                 "speaker": "TUSK",
-                "text": "If it is to help with the murder case, I am more than willing to share."
+                "text": "TUSK: If it is to help with the murder case, I am more than willing to share."
             },
             {
                 "dialogue_id": 3,
                 "speaker": "TUSK",
-                "text": "Lizzi was an exemplary employee in our team, embodying hard work, loyalty, and an admirable openness to learn."
+                "text": "TUSK: Lizzi was an exemplary employee in our team, embodying hard work, loyalty, and an admirable openness to learn."
             },
             {
                 "dialogue_id": 4,
                 "speaker": "TUSK",
-                "text": "However, a disturbing shift occurred, seemingly influenced by her husband, Cornelius. Suddenly, she veered off course, compromising her integrity by misappropriating sensitive data concerning our groundbreaking technology—a clear breach of her contract."
+                "text": "TUSK: However, a disturbing shift occurred, seemingly influenced by her husband, Cornelius. Suddenly, she veered off course, compromising her integrity by misappropriating sensitive data concerning our groundbreaking technology—a clear breach of her contract."
             },
             {
                 "dialogue_id": 5,
                 "speaker": "TUSK",
-                "text": "From that point, Lizzi vanished from our circles and whispers of her transformation into someone unrecognizable began to surface. It’s my belief that Cornelius played a pivotal role in this debacle, steering her down this regrettable path."
+                "text": "TUSK: From that point, Lizzi vanished from our circles and whispers of her transformation into someone unrecognizable began to surface. It’s my belief that Cornelius played a pivotal role in this debacle, steering her down this regrettable path."
             }
         ],
         "interactive": {
             "speaker": "BABEMAX",
-            "prompt": "Beep. Beep. Report to Boss P. It's time to decide",
+            "prompt": "BABEMAX: Beep. Beep. Report to Boss P. It's time to decide",
             "choices": [
                 {
                     "response": "Okay Babemax, take me to Boss P",
@@ -535,26 +558,26 @@
             {
                 "dialogue_id": 1,
                 "speaker": "BIRB",
-                "text": "Agent [NAME] and Agent Babemax, the evidence you’ve meticulously gathered points to our key suspects. It’s time to make the call that will echo through the halls of justice in Chicago."
+                "text": "BIRB: Agent Incognito and Agent Babemax, the evidence you’ve meticulously gathered points to our key suspects. It’s time to make the call that will echo through the halls of justice in Chicago."
             }
         ],
         "interactive": {
             "speaker": "BABEMAX",
-            "prompt": "Who among them do you believe is the mastermind behind this murder?",
+            "prompt": "BABEMAX: Who among them do you believe is the mastermind behind this murder?",
             "choices": [
                 {
                     "response": "I believe it’s Birb",
-                    "effect": [2,0,3,2],
+                    "effect": [0,0,0,0],
                     "sceneReference": 18
                 },
                 {
                     "response": "I believe it’s Cornelius",
-                    "effect": [-2,0,0,0],
+                    "effect": [0,0,0,0],
                     "sceneReference": 18
                 },
                 {
                     "response": "I believe it’s Elon Tusk",
-                    "effect": [-2,0,0,0],
+                    "effect": [0,0,0,0],
                     "sceneReference": 18
                 }
             ]
@@ -568,26 +591,26 @@
             {
                 "dialogue_id": 1,
                 "speaker": "BOSSP",
-                "text": "Your judgment has guided us thus far and will lead us to the conclusion of this case. Now, will you move to convict and close this chapter of our city’s story, or is there still a doubt in your heart that calls for a deeper search for absolute certainty?"
+                "text": "BOSS P: Your judgment has guided us thus far and will lead us to the conclusion of this case. Now, will you move to convict and close this chapter of our city’s story, or is there still a doubt in your heart that calls for a deeper search for absolute certainty?"
             },
             {
                 "dialogue_id": 2,
                 "speaker": "BOSSP",
-                "text": "Now, will you move to convict and close this chapter of our city’s story, or is there still a doubt in your heart that calls for a deeper search for absolute certainty?"
+                "text": "BOSS P: Now, will you move to convict and close this chapter of our city’s story, or is there still a doubt in your heart that calls for a deeper search for absolute certainty?"
             }
         ],
         "interactive": {
             "speaker": "BOSSP",
-            "prompt": "The decision rests in your hands.",
+            "prompt": "BOSS P: The decision rests in your hands.",
             "choices": [
                 {
                     "response": "I move to convict. Let’s bring justice to the city.",
-                    "effect": [2,0,3,2],
+                    "effect": [0,-2,2,0],
                     "sceneReference": 19
                 },
                 {
                     "response": "I still have reservations. I propose we investigate further before we make an irreversible decision.",
-                    "effect": [-2,0,0,0],
+                    "effect": [0,2,-2,0],
                     "sceneReference": 20
                 }
             ]
@@ -601,16 +624,16 @@
             {
                 "dialogue_id": 1,
                 "speaker": "BIRB",
-                "text": "Very well, Agent [Name]. Let’s bring this chapter to its truthful end, for the eyes of Chicago are upon us, trusting us to make the right call."
+                "text": "BIRB: Very well, Agent Incognito. Let’s bring this chapter to its truthful end, for the eyes of Chicago are upon us, trusting us to make the right call."
             }
         ],
         "interactive": {
             "speaker": "BABEMAX",
-            "prompt": "The suspect has been convicted. May the city live in peace and harmony.",
+            "prompt": "BABEMAX: The suspect has been convicted. May the city live in peace and harmony.",
             "choices": [
                 {
                     "response": "The end. Click to see your results",
-                    "effect": [2,0,3,2],
+                    "effect": [0,0,0,0],
                     "sceneReference": 15
                 }
             ]
@@ -624,7 +647,7 @@
             {
                 "dialogue_id": 1,
                 "speaker": "BIRB",
-                "text": "Very well, Agent [Name]. Let’s bring this chapter to its truthful end, for the eyes of Chicago are upon us, trusting us to make the right call."
+                "text": "Very well, Agent Incognito. Let’s bring this chapter to its truthful end, for the eyes of Chicago are upon us, trusting us to make the right call."
             }
         ],
         "interactive": {
