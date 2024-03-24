@@ -165,7 +165,7 @@
                     "sceneReference": 6
                 },
                 {
-                    "response": "[in progress] Let’s go talk to them directly. See what they have to say.",
+                    "response": "Let’s go talk to them directly. See what they have to say.",
                     "effect": [4,0,-3,0],
                     "sceneReference": 9
                 }
@@ -246,7 +246,7 @@
             {
                 "dialogue_id": 1,
                 "speaker": "TUSK",
-                "text": "TUSK: Lizzi, how long do you plan to let Cornelius leech off of you? "
+                "text": "ELON TUSK: Lizzi, how long do you plan to let Cornelius leech off of you? "
             },
             {
                 "dialogue_id": 2,
@@ -256,7 +256,7 @@
             {
                 "dialogue_id": 3,
                 "speaker": "TUSK",
-                "text": "TUSK: Fine. But he’s been doing nothing for years now—he also doesn't treat you well. Don’t let him drag you down."
+                "text": "ELON TUSK: Fine. But he’s been doing nothing for years now—he also doesn't treat you well. Don’t let him drag you down."
             },
             {
                 "dialogue_id": 4,
@@ -317,7 +317,17 @@
             {
                 "dialogue_id": 1,
                 "speaker": "BABEMAX",
-                "text": "BABEMAX: Wassup Cornelius!"
+                "text": "BABEMAX: Hello there! Are you Lizzi's husband?"
+            }, 
+            {
+                "dialogue_id": 2,
+                "speaker": "CORNELIUS",
+                "text": "CORNELIUS: Yes, I’m her husband. I’ve just been in shock since I heard the news."
+            },
+            {
+                "dialogue_id": 3,
+                "speaker": "CORNELIUS",
+                "text": "CORNELIUS: Apologies detectives, but I really don’t feel like talking about it now. But please, I beg of you, find the culprit."
             }
         ],
         "interactive": {
@@ -345,7 +355,17 @@
             {
                 "dialogue_id": 1,
                 "speaker": "BABEMAX",
-                "text": "BABEMAX: Wassup Tusk!"
+                "text": "BABEMAX: Hello there! Are you the CEO of company X?"
+            },
+            {
+                "dialogue_id": 2,
+                "speaker": "TUSK",
+                "text": "ELON TUSK: Ah yes, I am Lizzi’s neighbor and the CEO of company X. I’ve been utterly devastated by news of her murder."
+            },
+            {
+                "dialogue_id": 3,
+                "speaker": "TUSK",
+                "text": "ELON TUSK: She used to be employed at X in the past and was one of the brightest and talented people I’ve ever met. It is to my dismay that she has passed so soon. I wish you luck in this investigation."
             }
         ],
         "interactive": {
@@ -515,27 +535,27 @@
             {
                 "dialogue_id": 1,
                 "speaker": "TUSK",
-                "text": "TUSK: Ah, I see you’ve come back to talk with me."
+                "text": "ELON TUSK: Ah, I see you’ve come back to talk with me."
             },
             {
                 "dialogue_id": 2,
                 "speaker": "TUSK",
-                "text": "TUSK: If it is to help with the murder case, I am more than willing to share."
+                "text": "ELON TUSK: If it is to help with the murder case, I am more than willing to share."
             },
             {
                 "dialogue_id": 3,
                 "speaker": "TUSK",
-                "text": "TUSK: Lizzi was an exemplary employee in our team, embodying hard work, loyalty, and an admirable openness to learn."
+                "text": "ELON TUSK: Lizzi was an exemplary employee in our team, embodying hard work, loyalty, and an admirable openness to learn."
             },
             {
                 "dialogue_id": 4,
                 "speaker": "TUSK",
-                "text": "TUSK: However, a disturbing shift occurred, seemingly influenced by her husband, Cornelius. Suddenly, she veered off course, compromising her integrity by misappropriating sensitive data concerning our groundbreaking technology—a clear breach of her contract."
+                "text": "ELON TUSK: However, a disturbing shift occurred, seemingly influenced by her husband, Cornelius. Suddenly, she veered off course, compromising her integrity by misappropriating sensitive data concerning our groundbreaking technology—a clear breach of her contract."
             },
             {
                 "dialogue_id": 5,
                 "speaker": "TUSK",
-                "text": "TUSK: From that point, Lizzi vanished from our circles and whispers of her transformation into someone unrecognizable began to surface. It’s my belief that Cornelius played a pivotal role in this debacle, steering her down this regrettable path."
+                "text": "ELON TUSK: From that point, Lizzi vanished from our circles and whispers of her transformation into someone unrecognizable began to surface. It’s my belief that Cornelius played a pivotal role in this debacle, steering her down this regrettable path."
             }
         ],
         "interactive": {
