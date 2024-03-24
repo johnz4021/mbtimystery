@@ -1,6 +1,7 @@
 import json
 from abc import ABC
 from scene import Scene
+from src.Text import Dialogue
 
 
 class Game:
@@ -66,7 +67,7 @@ class Game:
     def pj_score(self) -> int:
         return self.pj_score
 
-    def load_scenes_from_json(self, json_file_path) -> dict[int: Scene]:
+    def load_scenes_from_json(self, json_file_path) -> dict[Scene]:
         """
         Loads scenes from a JSON file and returns a dictionary mapping scene_id to scene data.
 
@@ -78,7 +79,14 @@ class Game:
         """
         with open(json_file_path, "r") as file:
             scenes = json.load(file)
-        return {scene["scene_id"]: scene for scene in scenes}
+            
+        scenes_dict = {}
+        # Iterate over each scene in the loaded list of scenes
+        for scene in scenes:
+            # Use the scene_id as the key and the entire scene as the value
+            scenes_dict[scene["scene_id"]] = scene
+        
+        return scenes_dict
 
     def get_current_scene_id(self) -> int:
         """
@@ -114,3 +122,4 @@ class Game:
         Args:
             choice_id (_type_): The number the player chooses from the list of choices from the current scene's interactive. This determines the reference scene id (ie. the new scene).
         """
+    
