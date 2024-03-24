@@ -248,12 +248,12 @@
                 {
                     "response": "I hope Boss P has good news for us!",
                     "effect": [0,2,0,0],
-                    "sceneReference": 8
+                    "sceneReference": 12
                 },
                 {
-                    "response": "Uh oh, why is Boss P calling...",
+                    "response": "Boss P... This must be important.",
                     "effect": [0,-2,0,0],
-                    "sceneReference": 8
+                    "sceneReference": 12
                 }
             ]
         }
@@ -294,17 +294,22 @@
             {
                 "dialogue_id": 1,
                 "speaker": "BABEMAX",
-                "text": "Hey [NAME]! I was able to extract some records from this phone Lizzi left behind."
+                "text": "Wassup Cornelius!"
             }
         ],
         "interactive": {
             "speaker": "BABEMAX",
-            "prompt": "Take a look at this call with her husband Cornelius.",
+            "prompt": "Beep. Beep. Incoming call from Boss P.",
             "choices": [
                 {
-                    "response": "Let's see it.",
-                    "effect": [0,0,0,0],
-                    "sceneReference": 8
+                    "response": "I hope Boss P has good news for us!",
+                    "effect": [0,2,0,0],
+                    "sceneReference": 12
+                },
+                {
+                    "response": "Boss P... This must be important.",
+                    "effect": [0,-2,0,0],
+                    "sceneReference": 12
                 }
             ]
         }
@@ -317,17 +322,65 @@
             {
                 "dialogue_id": 1,
                 "speaker": "BABEMAX",
-                "text": "Hey [NAME]! I was able to extract some records from this phone Lizzi left behind."
+                "text": "Wassup Tusk!"
             }
         ],
         "interactive": {
             "speaker": "BABEMAX",
-            "prompt": "Take a look at this call with her husband Cornelius.",
+            "prompt": "Beep. Beep. Urgent message from Boss P. We have to meet him ASAP",
             "choices": [
                 {
-                    "response": "Let's see it.",
-                    "effect": [0,0,0,0],
-                    "sceneReference": 8
+                    "response": "I hope Boss P has good news for us!",
+                    "effect": [0,2,0,0],
+                    "sceneReference": 12
+                },
+                {
+                    "response": "Boss P... This must be important.",
+                    "effect": [0,-2,0,0],
+                    "sceneReference": 12
+                }
+            ]
+        }
+    },
+    {
+        "scene_id": 12,
+        "speakers": "MC,BABEMAX,BOSSP",
+        "setting": "downtown_chicago.jpg",
+        "dialogues": [
+            {
+                "dialogue_id": 1,
+                "speaker": "BOSSP",
+                "text": "Agent [NAME] and Agent Babemax, I have some new information to relay to you."
+            },
+            {
+                "dialogue_id": 2,
+                "speaker": "BOSSP",
+                "text": "We just completed a forensics analysis and have tracked down the murderer’s identity. They are a high-ranking member of the underground assassin’s guild."
+            },
+            {
+                "dialogue_id": 3,
+                "speaker": "BOSSP",
+                "text": "We also found that they were hired by Company X around the time Lizzi died."
+            },
+            {
+                "dialogue_id": 4,
+                "speaker": "BABEMAX",
+                "text": "Oh sus… Well [NAME],"
+            }
+        ],
+        "interactive": {
+            "speaker": "BABEMAX",
+            "prompt": "what do you think we should do next?",
+            "choices": [
+                {
+                    "response": "Let’s infiltrate Company X undercover.",
+                    "effect": [5,-3,3,0],
+                    "sceneReference": 13
+                },
+                {
+                    "response": "Let’s gather information from afar through cyber-breaching.",
+                    "effect": [-5,3,-3,0],
+                    "sceneReference": 14
                 }
             ]
         }
