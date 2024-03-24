@@ -9,19 +9,19 @@ class Dialogue:
 
     @property
     def speaker(self) -> str:
-        return self.speaker
-
-    @property
-    def text(self) -> str:
-        return self.text
+        return self._speaker  # Return the backing field
 
     @speaker.setter
     def speaker(self, value: str):
-        self._speaker = value  # Allow setting the speaker
+        self._speaker = value  # Modify the backing field
+
+    @property
+    def text(self) -> str:
+        return self._text  # Return the backing field
 
     @text.setter
     def text(self, value: str):
-        self._text = value  # Allow setting the text
+        self._text = value  # Modify the backing field
 
 
 class Interactive:
