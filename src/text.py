@@ -7,7 +7,7 @@ class Text(ABC):
     Base class to represent all text-based game elements.
     """
 
-    def __init__(self, speaker: Character, text: str):
+    def __init__(self, speaker: str, text: str):
         self.speaker = speaker
         self.text = text
 
@@ -17,9 +17,16 @@ class Dialogue(Text):
     Class to represent non-interactive dialogue.
     """
 
-    def __init__(self, speaker: Character, text: str):
+    def __init__(self, speaker: str, text: str):
         super().__init__(speaker, text)
-
+    
+    @property
+    def speaker(self) -> str:
+        return self.speaker
+    
+    @property
+    def text(self) -> str:
+        return self.text
 
 class Interactive(Text):
     """
@@ -40,13 +47,25 @@ class Interactive(Text):
             self.response = response
             self.effect = effect
             self.sceneReference = scene_reference
+                
+        @property
+        def response(self) -> str:
+            return self.response
+        
+        @property
+        def scene_reference(self) -> int:
+            return self.scene_reference
+        
+        @property
+        def effect(self) -> list[int]:
+            return self.effect
 
-    def __init__(self, speaker: Character, prompt: str, choices: list[dict]):
+    def __init__(self, speaker: str, prompt: str, choices: list[dict]):
         """
         Initializes the Interactive object with a speaker, a prompt, and choices.
 
         Args:
-            speaker (Character): The character who is speaking.
+            speaker (str): The character who is speaking.
             prompt (str): The prompt presented to the player.
             choices (list[dict]): A list of dictionaries, each representing a choice with 'response', 'effect', and 'sceneReference'.
         """
@@ -66,3 +85,11 @@ class Interactive(Text):
     @property
     def choices(self) -> list[Choice]:
         return self.choices
+    
+    @property
+    def speaker(self) -> str:
+        return self.speaker
+    
+    @property
+    def prompt(self) -> str:
+        return self.prompt
