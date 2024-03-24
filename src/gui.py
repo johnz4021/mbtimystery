@@ -97,7 +97,7 @@ def draw_dialogue_box(screen, text):
     text_y = outer_box_y + (outer_box_height - box_height) // 2 + border_thickness
 
     # Render and blit the wrapped text onto the screen
-    draw_text_wrapped(screen, text, (text_x, text_y), font, 60, BLACK)  # 60 characters, adjust as needed
+    draw_text_wrapped(screen, text, (text_x, text_y), font, 80, BLACK)  # 60 characters, adjust as needed
 
 
 def draw_text_wrapped_2(surface, text, pos, font, max_width, color, bg_color=None):
