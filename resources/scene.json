@@ -408,7 +408,7 @@
                 {
                     "response": "Investigate Elon Tusk further.",
                     "effect": [0,0,0,5],
-                    "sceneReference": 15
+                    "sceneReference": 16
                 }
             ]
         }
@@ -429,20 +429,63 @@
             "prompt": "Who are you and what do you want?",
             "choices": [
                 {
-                    "response": "Sorry, I didn't mean to surprise you.",
-                    "effect": [0,2,0,0],
-                    "sceneReference": 14
+                    "response": "Sorry, I didn't mean to surprise you. Just wanted to chat!",
+                    "effect": [2,0,3,2],
+                    "sceneReference": 15
                 },
                 {
                     "response": "… (show detective badge)",
-                    "effect": [0,-2,0,0],
-                    "sceneReference": 14
+                    "effect": [-2,0,0,0],
+                    "sceneReference": 15
                 }
             ]
         }
     },
     {
         "scene_id": 15,
+        "speakers": "MC,BABEMAX,BIRB",
+        "setting": "police_station.png",
+        "dialogues": [
+            {
+                "dialogue_id": 1,
+                "speaker": "BIRB",
+                "text": "Oh I recognize you from the news. Wait wait don’t hurt me, you’ve come to the right person to talk to. "
+            },
+            {
+                "dialogue_id": 2,
+                "speaker": "BIRB",
+                "text": "If you’ve talked with Elon Tusk before, I’m sure he never brought this full story out:"
+            },
+            {
+                "dialogue_id": 3,
+                "speaker": "BIRB",
+                "text": "back when Lizzi was still an employee at Company X, they were stealing her personal research on longevity pills as their own and didn’t give any credit to her."
+            },
+            {
+                "dialogue_id": 4,
+                "speaker": "BIRB",
+                "text": "In the end, she decided to leave with her research. It was sad to see her leave, as she was my research partner, but I thought that it was for the best."
+            },
+            {
+                "dialogue_id": 5,
+                "speaker": "BIRB",
+                "text": "That must’ve angered Tusk though."
+            }
+        ],
+        "interactive": {
+            "speaker": "BABEMAX",
+            "prompt": "Beep. Beep. Report to Boss P. It's time to decide",
+            "choices": [
+                {
+                    "response": "Okay Babemax, take me to Boss P",
+                    "effect": [0,0,0,0],
+                    "sceneReference": 17
+                }
+            ]
+        }
+    },
+    {
+        "scene_id": 16,
         "speakers": "MC,BABEMAX,TUSK",
         "setting": "police_station.png",
         "dialogues": [
@@ -455,21 +498,59 @@
                 "dialogue_id": 2,
                 "speaker": "TUSK",
                 "text": "If it is to help with the murder case, I am more than willing to share."
+            },
+            {
+                "dialogue_id": 3,
+                "speaker": "TUSK",
+                "text": "Lizzi was an exemplary employee in our team, embodying hard work, loyalty, and an admirable openness to learn."
+            },
+            {
+                "dialogue_id": 4,
+                "speaker": "TUSK",
+                "text": "However, a disturbing shift occurred, seemingly influenced by her husband, Cornelius. Suddenly, she veered off course, compromising her integrity by misappropriating sensitive data concerning our groundbreaking technology—a clear breach of her contract."
+            },
+            {
+                "dialogue_id": 5,
+                "speaker": "TUSK",
+                "text": "From that point, Lizzi vanished from our circles and whispers of her transformation into someone unrecognizable began to surface. It’s my belief that Cornelius played a pivotal role in this debacle, steering her down this regrettable path."
             }
         ],
         "interactive": {
             "speaker": "BABEMAX",
-            "prompt": "Who do you want to approach and talk to further?",
+            "prompt": "Beep. Beep. Report to Boss P. It's time to decide",
             "choices": [
                 {
-                    "response": "Search the area and find Birb.",
-                    "effect": [0,2,0,0],
-                    "sceneReference": 14
+                    "response": "Okay Babemax, take me to Boss P",
+                    "effect": [0,0,0,0],
+                    "sceneReference": 17
+                }
+            ]
+        }
+    },
+    {
+        "scene_id": 17,
+        "speakers": "MC,BABEMAX,BIRB",
+        "setting": "police_station.png",
+        "dialogues": [
+            {
+                "dialogue_id": 1,
+                "speaker": "BIRB",
+                "text": "Oh goodness! Don’t sneak up on me like that."
+            }
+        ],
+        "interactive": {
+            "speaker": "BABEMAX",
+            "prompt": "Who are you and what do you want?",
+            "choices": [
+                {
+                    "response": "Sorry, I didn't mean to surprise you. Just wanted to chat!",
+                    "effect": [2,0,3,2],
+                    "sceneReference": 15
                 },
                 {
-                    "response": "Investigate Elon Tusk further.",
-                    "effect": [0,-2,0,0],
-                    "sceneReference": 14
+                    "response": "… (show detective badge)",
+                    "effect": [-2,0,0,0],
+                    "sceneReference": 15
                 }
             ]
         }
